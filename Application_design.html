@@ -1,0 +1,4949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- إضافة مكتبات جديدة للحركة والتفاعل -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+	<style>
+		body, h1, h2, h3, h4, h5, h6, p, a, span, div {
+			font-family: 'Cairo', sans-serif !important;
+		}
+	</style>
+
+<style>
+  /* تنسيقات قسم خدمات التطبيقات المتحركة */
+  .services-animated-section {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+    z-index: 1;
+  }
+  
+  /* خلفية متحركة */
+  .services-bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(248, 139, 55, 0.03) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(203, 61, 39, 0.03) 100%);
+    z-index: 1;
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+  }
+  
+  /* جزيئات متحركة في الخلفية */
+  .services-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23f88b37" opacity="0.3"/></svg>');
+    background-size: 100px 100px;
+    z-index: 1;
+    opacity: 0.5;
+  }
+  
+  /* زخارف الزوايا */
+  .corner-decoration {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 1;
+    opacity: 0.2;
+  }
+  
+  .corner-decoration-1 {
+    top: 0;
+    right: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,0 L150,0 L150,150 Z" fill="%23f88b37"/></svg>');
+  }
+  
+  .corner-decoration-2 {
+    bottom: 0;
+    left: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,150 L0,0 L150,150 Z" fill="%23cb3d27"/></svg>');
+  }
+  
+  /* عنوان القسم المتحرك */
+  .animated-title {
+    position: relative;
+    display: inline-block;
+    color: #cb3d27;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+  
+  .animated-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #f88b37;
+    animation: widthAnimation 3s ease-in-out infinite;
+  }
+  
+  @keyframes widthAnimation {
+    0% {
+      width: 40px;
+    }
+    50% {
+      width: 120px;
+    }
+    100% {
+      width: 40px;
+    }
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* مربعات الخدمات المتحركة */
+  .service-box {
+    min-height: 320px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    padding: 30px 20px;
+    transition: all 0.5s ease;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    z-index: 2;
+  }
+  
+  .service-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #f88b37, #cb3d27);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+    z-index: 1;
+  }
+  
+  .service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
+  
+  .service-box:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .service-icon {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .service-icon::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(248, 139, 55, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 2s infinite;
+  }
+  
+  .service-icon img {
+    max-height: 80px;
+    max-width: 80px;
+    transition: transform 0.3s ease;
+  }
+  
+  .service-box:hover .service-icon img {
+    transform: scale(1.1);
+  }
+  
+  .service-content h4 {
+    color: #f88b37;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .service-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+  }
+  
+  /* تحسينات للأجهزة المحمولة */
+  @media (max-width: 768px) {
+    .services-animated-section {
+      padding: 60px 0;
+    }
+    
+    .service-box {
+      min-height: auto;
+    }
+  }
+</style>
+  <!--=====TITLE=======-->
+
+  <title>دوام || تصميم التطبيقات</title>
+  <style>
+    /* تطبيق خط Cairo على جميع العناصر في الصفحة */
+    * {
+      font-family: 'Cairo', sans-serif !important;
+    }
+    
+    ul {
+      list-style: none;
+      padding: 30px;
+      text-align: end;
+      color: #000000;
+      width: 100%;
+      font-weight: lighter;
+      
+    }
+    li {
+      margin: 10px 5px;
+      font-size: 25px;
+    }
+    .icon {
+      margin-left: 10px;
+      color: #ffffff;
+      font-size: large;
+    }
+    .dwam {
+      margin-left: 550px;
+    }
+    .in-kont{
+      color: #ff8400;
+      font-weight: 100;
+    }
+    icon-2{
+      color: #000;
+    }
+    .brand2-logos img {
+    		 width: 200px;
+            height: 150px;
+            object-fit: contain;
+            margin: 0 auto;
+            display: block;
+            
+        
+    }
+    
+  </style>
+
+<style>
+  /* تنسيقات قسم خدمات التطبيقات المتحركة */
+  .services-animated-section {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+    z-index: 1;
+  }
+  
+  /* خلفية متحركة */
+  .services-bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(248, 139, 55, 0.03) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(203, 61, 39, 0.03) 100%);
+    z-index: 1;
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+  }
+  
+  /* جزيئات متحركة في الخلفية */
+  .services-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23f88b37" opacity="0.3"/></svg>');
+    background-size: 100px 100px;
+    z-index: 1;
+    opacity: 0.5;
+  }
+  
+  /* زخارف الزوايا */
+  .corner-decoration {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 1;
+    opacity: 0.2;
+  }
+  
+  .corner-decoration-1 {
+    top: 0;
+    right: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,0 L150,0 L150,150 Z" fill="%23f88b37"/></svg>');
+  }
+  
+  .corner-decoration-2 {
+    bottom: 0;
+    left: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,150 L0,0 L150,150 Z" fill="%23cb3d27"/></svg>');
+  }
+  
+  /* عنوان القسم المتحرك */
+  .animated-title {
+    position: relative;
+    display: inline-block;
+    color: #cb3d27;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+  
+  .animated-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #f88b37;
+    animation: widthAnimation 3s ease-in-out infinite;
+  }
+  
+  @keyframes widthAnimation {
+    0% {
+      width: 40px;
+    }
+    50% {
+      width: 120px;
+    }
+    100% {
+      width: 40px;
+    }
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* مربعات الخدمات المتحركة */
+  .service-box {
+    min-height: 320px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    padding: 30px 20px;
+    transition: all 0.5s ease;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    z-index: 2;
+  }
+  
+  .service-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #f88b37, #cb3d27);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+    z-index: 1;
+  }
+  
+  .service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
+  
+  .service-box:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .service-icon {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .service-icon::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(248, 139, 55, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 2s infinite;
+  }
+  
+  .service-icon img {
+    max-height: 80px;
+    max-width: 80px;
+    transition: transform 0.3s ease;
+  }
+  
+  .service-box:hover .service-icon img {
+    transform: scale(1.1);
+  }
+  
+  .service-content h4 {
+    color: #f88b37;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .service-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+  }
+  
+  /* تحسينات للأجهزة المحمولة */
+  @media (max-width: 768px) {
+    .services-animated-section {
+      padding: 60px 0;
+    }
+    
+    .service-box {
+      min-height: auto;
+    }
+  }
+</style>
+
+
+  <!--=====FAV ICON=======-->
+  <link rel="shortcut icon" href="assets/images/logo/لوجو دوام (1).png">
+
+  <!--=====CSS=======-->
+  <link rel="stylesheet" href="http://dwam-tech.com/assets/css/plugins/bootstrap.min.css">
+  <link rel="stylesheet" href="http://dwam-tech.com/assets/css/plugins/swiper.bundle.css">
+  <link rel="stylesheet" href="http://dwam-tech.com/assets/css/plugins/fontawesome.css">
+  <link rel="stylesheet" href="http://dwam-tech.com/assets/css/plugins/mobile.css">
+  <link rel="stylesheet" href="http://dwam-tech.com/assets/css/plugins/magnific-popup.css">
+  <link rel="stylesheet" href="http://dwam-tech.com/assets/css/plugins/slick-slider.css">
+  <link rel="stylesheet" href="http://dwam-tech.com/assets/css/plugins/owlcarousel.min.css">
+  <link rel="stylesheet" href="http://dwam-tech.com/assets/css/plugins/aos.css">
+  <link rel="stylesheet" href="http://dwam-tech.com/assets/css/typography.css">
+  <link rel="stylesheet" href="http://dwam-tech.com/assets/css/master.css">
+  <!-- إضافة خط Cairo من Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+  <!--=====JQUERY=======-->
+  <script src="http://dwam-tech.com/assets/js/plugins/jquery-3-6-0.min.js"></script>
+  
+</head>
+
+<body>
+  
+  <!--===== PRELOADER STARTS =======-->
+  <div id="preloader">
+    <div class="preloader"><span></span><span></span></div>
+  </div>
+ <!--===== PRELOADER ENDS =======-->
+ 
+  <!--===== PAGE PROGRESS START=======-->
+  <div class="paginacontainer">
+    <div class="progress-wrap">
+      <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+      </svg>
+    </div>
+  </div>
+<!--===== PAGE PROGRESS END=======-->
+
+
+
+    
+<!--===== VIDEO HEADER SECTION STARTS =======-->
+
+<section class="header" style="position: relative; height: 100vh; overflow: hidden; direction: rtl;">
+  <video autoplay muted loop id="header-video" style="position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
+    <source src="http://dwam-tech.com/wp-content/uploads/2025/06/programming-code-programming-language-strings-pr-2023-11-27-05-25-42-utc.mp4" type="video/mp4">
+  </video>
+  
+  <div class="video-overlay" style="position: absolute; top: 0; right: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(255,132,0,0.6) 100%); z-index: 2;"></div>
+  
+  <div class="container" style="position: relative; z-index: 3; height: 100%; display: flex; align-items: center; justify-content: center;">
+    <div class="row justify-content-center w-100">
+      <div class="col-lg-10 col-md-12 col-sm-12 text-center">
+        <div class="logo-container" data-aos="fade-up" data-aos-duration="1200" style="margin-bottom: 20px;">
+        <a href="https://dwam-tech.com/259-2/">
+        <img src="http://dwam-tech.com/wp-content/uploads/2025/06/dwam.png" alt="${title}" style="width: 250px; height: auto; border-radius: 50%; box-shadow: #000000 5px;">
+        </a>
+        </div>
+  
+        <h1 class="main-title" data-aos="fade-up" data-aos-duration="1200" style="color: #ffffff; font-size: 48px; font-weight: bold; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+           تصميم التطبيقات 
+        </h1>
+  
+        
+    <!-- أيقونات الخدمات (تظهر مباشرة) -->
+    <div id="services-icons" class="services-icons" style="margin-top: 15px; margin-bottom: 20px;">
+      <div class="row justify-content-center">
+        <!-- حلول برمجية -->
+        <div class="col-4 col-sm-4 col-md-2 service-icon-item" data-aos="zoom-in" data-aos-delay="100">
+          <a href="https://dwam-tech.com/innovative_software_solutions/"  data-aos="zoom-in" data-aos-delay="100">
+          <div class="service-icon-box">
+            <i class="fas fa-laptop-code" style="font-size: 28px; color: #ff8400; margin-bottom: 10px;"></i>
+            <p style="color: #ffffff; font-size: 14px; margin: 0;">حلول برمجية</p>
+          </div>
+        </a>
+        </div>
+  
+        <!-- تصميم الجرافيك -->
+        <div class="col-4 col-sm-4 col-md-2 service-icon-item" data-aos="zoom-in" data-aos-delay="200">
+          <a href="https://dwam-tech.com/graphic_design/"  data-aos="zoom-in" data-aos-delay="100">
+  
+          <div class="service-icon-box">
+            <i class="fas fa-paint-brush" style="font-size: 28px; color: #ff8400; margin-bottom: 10px;"></i>
+            <p style="color: #ffffff; font-size: 14px; margin: 0;">تصميم الجرافيك</p>
+          </div>
+          </a>
+        </div>
+        
+        <!-- المالتيميديا -->
+        <div class="col-4 col-sm-4 col-md-2 service-icon-item" data-aos="zoom-in" data-aos-delay="300">
+          <a href="https://dwam-tech.com/multimedia/"  data-aos="zoom-in" data-aos-delay="100">
+  
+          <div class="service-icon-box">
+            <i class="fas fa-film" style="font-size: 28px; color: #ff8400; margin-bottom: 10px;"></i>
+            <p style="color: #ffffff; font-size: 14px; margin: 0;">المالتيميديا</p>
+          </div>
+          </a>
+        </div>
+        
+        <!-- حلول الذكاء الإصطناعي -->
+        <div class="col-4 col-sm-4 col-md-2 service-icon-item" data-aos="zoom-in" data-aos-delay="400">
+          <a href="https://dwam-tech.com/ai_solutions/"  data-aos="zoom-in" data-aos-delay="100">
+  
+          <div class="service-icon-box">
+            <i class="fas fa-brain" style="font-size: 28px; color: #ff8400; margin-bottom: 10px;"></i>
+            <p style="color: #ffffff; font-size: 14px; margin: 0;">الذكاء الإصطناعي</p>
+          </div>
+          </a>
+        </div>
+        
+        <!-- صناعة المحتوى -->
+        <div class="col-4 col-sm-4 col-md-2 service-icon-item" data-aos="zoom-in" data-aos-delay="500">
+          <a href="https://dwam-tech.com/content_creation/"  data-aos="zoom-in" data-aos-delay="100">
+  
+          <div class="service-icon-box">
+            <i class="fas fa-pen-fancy" style="font-size: 28px; color: #ff8400; margin-bottom: 10px;"></i>
+            <p style="color: #ffffff; font-size: 14px; margin: 0;">صناعة المحتوى</p>
+          </div>
+          </a>
+        </div>
+        
+        <!-- خدمات الإستضافة -->
+        <div class="col-4 col-sm-4 col-md-2 service-icon-item" data-aos="zoom-in" data-aos-delay="600">
+          <a href="https://dwam-tech.com/Server_and_Cloud_Computing/"  data-aos="zoom-in" data-aos-delay="100">
+  
+          <div class="service-icon-box">
+            <i class="fa fa-cloud" style="font-size: 28px; color: #ff8400; margin-bottom: 10px;"></i>
+            <p style="color: #ffffff; font-size: 14px; margin: 0;">الإستضافة السحابية </p>
+          </div>
+          </a>
+        </div>
+        
+        <!-- التسويق الإلكتروني -->
+        <div class="col-4 col-sm-4 col-md-2 service-icon-item" data-aos="zoom-in" data-aos-delay="700">
+          <a href="https://dwam-tech.com/e-marketing/"  data-aos="zoom-in" data-aos-delay="100">
+  
+          <div class="service-icon-box">
+            <i class="fas fa-bullhorn" style="font-size: 28px; color: #ff8400; margin-bottom: 10px;"></i>
+            <p style="color: #ffffff; font-size: 14px; margin: 0;">التسويق الإلكتروني</p>
+          </div>
+          </a>
+        </div>
+        
+        <!-- تكنولوجيا التعليم -->
+        <div class="col-4 col-sm-4 col-md-2 service-icon-item" data-aos="zoom-in" data-aos-delay="800">
+          <a href="https://dwam-tech.com/Educational_technology/"  data-aos="zoom-in" data-aos-delay="100">
+  
+          <div class="service-icon-box">
+            <i class="fas fa-chalkboard-teacher" style="font-size: 28px; color: #ff8400; margin-bottom: 10px;"></i>
+            <p style="color: #ffffff; font-size: 14px; margin: 0;">تكنولوجيا التعليم</p>
+          </div>
+          </a>
+        </div>
+        
+        <!-- خدمات التحول الرقمي -->
+        <div class="col-4 col-sm-4 col-md-2 service-icon-item" data-aos="zoom-in" data-aos-delay="900">
+          <a href="https://dwam-tech.com/Digital_transformation/"  data-aos="zoom-in" data-aos-delay="100">
+  
+          <div class="service-icon-box">
+            <i class="fas fa-exchange" style="font-size: 28px; color: #ff8400; margin-bottom: 10px;"></i>
+            <p style="color: #ffffff; font-size: 14px; margin: 0;">التحول الرقمي</p>
+          </div>
+          </a>
+        </div>
+        
+        <!-- استشارات تقنية -->
+        <div class="col-4 col-sm-4 col-md-2 service-icon-item" data-aos="zoom-in" data-aos-delay="1000">
+          <a href="https://dwam-tech.com/Technical_Consulting/l"  data-aos="zoom-in" data-aos-delay="100">
+  
+          <div class="service-icon-box">
+            <i class="fas fa-comments" style="font-size: 28px; color: #ff8400; margin-bottom: 10px;"></i>
+            <p style="color: #ffffff; font-size: 14px; margin: 0;">استشارات تقنية</p>
+          </div>
+          </a>
+        </div>
+        
+        <!-- دورات تدريبية -->
+        <div class="col-4 col-sm-4 col-md-2 service-icon-item" data-aos="zoom-in" data-aos-delay="1100">
+          <a href="https://dwam-tech.com/Courses/"  data-aos="zoom-in" data-aos-delay="100">
+  
+          <div class="service-icon-box">
+            <i class="fas fa-graduation-cap" style="font-size: 28px; color: #ff8400; margin-bottom: 10px;"></i>
+            <p style="color: #ffffff; font-size: 14px; margin: 0;">دورات تدريبية</p>
+          </div>
+          </a>
+        </div>
+  
+        <!-- منتجات دوام الخاصة -->
+        <div class="col-4 col-sm-4 col-md-2 service-icon-item" data-aos="zoom-in" data-aos-delay="1200">
+          <a href="https://dwam-tech.com/Special_Dwam_Products/"  data-aos="zoom-in" data-aos-delay="100">
+  
+          <div class="service-icon-box">
+            <i class="fas fa-shop" style="font-size: 28px; color: #ff8400; margin-bottom: 10px;"></i>
+            <p style="color: #ffffff; font-size: 14px; margin: 0;"> منتجات دوام الخاصة</p>
+          </div>
+          </a>
+        </div>
+  
+        
+      </div>
+    </div>
+    
+    <!-- أزرار الدعوة للعمل -->
+   <!-- <div class="cta-buttons" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+      <a href="#projects" class="btn" style="background: transparent; color: #ffffff; font-size: 18px; font-weight: bold; padding: 12px 30px; border-radius: 50px; text-decoration: none; display: inline-block; margin: 0 10px; transition: all 0.3s ease; border: 2px solid #ffffff;">مشاريعنا</a>
+    </div>-->
+  </div>
+  </div>
+  </div>
+  
+  <!-- سهم للتمرير لأسفل -->
+  <div class="scroll-down" style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3; animation: bounce 2s infinite;">
+  <a href="#multimedia" style="color: #ffffff; font-size: 30px;">
+  <i class="fas fa-chevron-down"></i>
+  </a>
+  </div>
+  
+  <!-- CSS للتأثيرات -->
+  <style>
+  @keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(20px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+  }
+  
+  @keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-20px); }
+  60% { transform: translateX(-50%) translateY(-10px); }
+  }
+  
+  @keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .service-icon-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s forwards;
+  }
+  
+  .service-icon-item:hover .service-icon-box {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.2);
+  }
+  .service-icon-box{
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+  }
+  .animated-text {
+  display: none;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  animation: fadeInOut 4s forwards;
+  }
+  
+  .animated-text.active {
+  display: block;
+  }
+  
+  .btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  }
+  
+  /* تجاوب مع الشاشات المختلفة */
+  @media (max-width: 992px) {
+  .main-title {
+    font-size: 38px;
+    margin-bottom: 25px;
+  }
+  .logo-container img {
+    width: 200px;
+  }
+  .service-icon-box {
+    padding: 12px;
+  }
+  .service-icon-box i {
+    font-size: 24px !important;
+  }
+  }
+  
+  @media (max-width: 768px) {
+  .main-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  .logo-container img {
+    width: 180px;
+  }
+  .cta-buttons .btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 5px;
+  }
+  .service-icon-box {
+    padding: 10px;
+  }
+  .service-icon-box i {
+    font-size: 22px !important;
+    margin-bottom: 8px !important;
+  }
+  .service-icon-box p {
+    font-size: 12px !important;
+  }
+  }
+  
+  @media (max-width: 576px) {
+  .video-header-section {
+    height: 100vh;
+  }
+  .main-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+  .logo-container img {
+    width: 150px;
+  }
+  .service-icon-box {
+    padding: 8px;
+  }
+  .service-icon-box i {
+    font-size: 20px !important;
+    margin-bottom: 5px !important;
+  }
+  .service-icon-box p {
+    font-size: 11px !important;
+  }
+  .services-icons {
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
+  }
+  }
+  
+  @media (max-width: 480px) {
+  .main-title {
+    font-size: 24px;
+  }
+  .logo-container img {
+    width: 130px;
+  }
+  .service-icon-box i {
+    font-size: 18px !important;
+    margin-bottom: 4px !important;
+  }
+  .service-icon-box p {
+    font-size: 10px !important;
+  }
+  .service-icon-box {
+    padding: 6px;
+    margin-bottom: 10px;
+  }
+  }
+  
+  /* تحسين خاص للشاشات من 375 إلى 360 بكسل */
+  @media (max-width: 375px) and (min-width: 360px) {
+  .main-title {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .logo-container img {
+    width: 110px;
+  }
+  .service-icon-box {
+    padding: 5px;
+    margin-bottom: 8px;
+  }
+  .service-icon-box i {
+    font-size: 16px !important;
+    margin-bottom: 3px !important;
+  }
+  .service-icon-box p {
+    font-size: 9px !important;
+    line-height: 1.2 !important;
+  }
+  .container {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+  .row {
+    margin-left: -5px !important;
+    margin-right: -5px !important;
+  }
+  .col-4 {
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+  }
+  }
+  
+  @media (max-width: 400px) {
+  .main-title {
+    font-size: 22px;
+  }
+  .logo-container img {
+    width: 120px;
+  }
+  .service-icon-box i {
+    font-size: 16px !important;
+    margin-bottom: 3px !important;
+  }
+  .service-icon-box p {
+    font-size: 9px !important;
+  }
+  .service-icon-box {
+    padding: 5px;
+    margin-bottom: 8px;
+  }
+  }
+  
+  @media (max-width: 320px) {
+  .main-title {
+    font-size: 20px;
+  }
+  .logo-container img {
+    width: 100px;
+  }
+  .service-icon-box i {
+    font-size: 14px !important;
+    margin-bottom: 2px !important;
+  }
+  .service-icon-box p {
+    font-size: 8px !important;
+  }
+  .service-icon-box {
+    padding: 4px;
+    margin-bottom: 6px;
+  }
+  }
+  
+  /* إضافة تجاوب للشاشات الأصغر من 320 بكسل */
+  @media (max-width: 280px) {
+  .main-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .logo-container img {
+    width: 80px;
+  }
+  .service-icon-box i {
+    font-size: 12px !important;
+    margin-bottom: 1px !important;
+  }
+  .service-icon-box p {
+    font-size: 7px !important;
+  }
+  .service-icon-box {
+    padding: 3px;
+    margin-bottom: 5px;
+  }
+  .services-icons {
+    margin-top: 5px !important;
+    margin-bottom: 10px !important;
+  }
+  }
+  
+  @media (max-width: 240px) {
+  .main-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .logo-container img {
+    width: 70px;
+  }
+  .service-icon-box i {
+    font-size: 10px !important;
+    margin-bottom: 1px !important;
+  }
+  .service-icon-box p {
+    font-size: 6px !important;
+  }
+  .service-icon-box {
+    padding: 2px;
+    margin-bottom: 4px;
+  }
+  .scroll-down {
+    bottom: 15px;
+  }
+  .scroll-down i {
+    font-size: 20px !important;
+  }
+  }
+  @media (max-width: 377px) and (min-width: 360px) {
+  .main-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+  }
+  .logo-container img {
+  width: 0px;
+  height: 0px;
+  }
+  .service-icon-box {
+  padding: 4px;
+  margin-bottom: 6px;
+  }
+  .service-icon-box i {
+  font-size: 14px !important;
+  margin-bottom: 2px !important;
+  }
+  .service-icon-box p {
+  font-size: 8px !important;
+  line-height: 1.1 !important;
+  }
+  .container {
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+  }
+  .row {
+  margin-left: -3px !important;
+  margin-right: -3px !important;
+  }
+  .col-4 {
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  }
+  .services-icons {
+  margin-top: 8px !important;
+  margin-bottom: 15px !important;
+  }
+  .scroll-down {
+  bottom: 20px;
+  }
+  .scroll-down i {
+  font-size: 22px !important;
+  }
+  }
+  
+  @media (max-width: 540px) and (min-width: 360px) {
+  .main-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+  }
+  .logo-container img {
+  width: 0px;
+  height: 0px;
+  }
+  .service-icon-box {
+  padding: 4px;
+  margin-bottom: 6px;
+  }
+  .service-icon-box i {
+  font-size: 14px !important;
+  margin-bottom: 2px !important;
+  }
+  .service-icon-box p {
+  font-size: 8px !important;
+  line-height: 1.1 !important;
+  }
+  .container {
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+  }
+  .row {
+  margin-left: -3px !important;
+  margin-right: -3px !important;
+  }
+  .col-4 {
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+  }
+  .services-icons {
+  margin-top: 8px !important;
+  margin-bottom: 15px !important;
+  }
+  .scroll-down {
+  bottom: 20px;
+  }
+  .scroll-down i {
+  font-size: 22px !important;
+  }
+  }
+  </style>
+  
+  <!-- JavaScript لتفعيل ظهور الأيقونات بشكل متتالي -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+  // تطبيق تأخير للأيقونات لإظهارها بشكل متتالي
+  const iconItems = document.querySelectorAll('.service-icon-item');
+  iconItems.forEach((item, index) => {
+    setTimeout(() => {
+      item.style.opacity = '1';
+      item.style.transform = 'translateY(0)';
+    }, 100 * index);
+  });
+  });
+  </script>
+  </div>
+  </section>
+  
+<!--===== VIDEO HEADER SECTION ENDS =======-->
+
+
+
+<div id="full-container">
+  <header id="header">
+    <!-- الهيدر الجديد مع خلفية متحركة -->
+    <section class="animated-header">
+      <!-- الخلفية المتحركة -->
+      <div class="animated-background"></div>
+      
+      <!-- طبقة التعتيم -->
+      <div class="overlay"></div>
+      
+      <!-- اللوجو في الأعلى على اليمين -->
+      
+      
+      <!-- محتوى الهيدر -->
+      <div class="header-content">
+        <div class="header-text">
+          <h2 style="color: #ff8400;" class="light-heading subheader">برمجة تطبيقات هاتفية ذكية وفعالة لمؤسستك | شركة دوام للأعمال التقنية </h2>
+          <ul style="color: #ffffff; list-style: none; text-align: right; padding-right: 0; font-weight: bold; font-size: large;">
+            <li style="margin-bottom: 10px;">حلول تقنية مبتكرة ✔ </li>
+            <li style="margin-bottom: 10px;">خبرة تتجاوز 15 عامًا ✔ </li>
+            <li style="margin-bottom: 10px;">نخدم جميع الدول العربية ✔ </li>
+          </ul>
+          <a href="https://wa.me/201555855857" class="btn-custom animated-btn" style="background-color: #ff8400; border-radius: 50px; color: #ffffff; margin-top: 20px; padding: 12px 35px; font-size: 18px; font-weight: bold; display: inline-block; transition: all 0.3s ease;">تواصل معنا الآن</a>        </div>
+        <div class="header-image">
+          <img src="https://dwam-tech.com/wp-content/uploads/2025/06/Tutorial_-Letundra-app-Gif.gif" alt="تطبيقات الجوال" style="border-radius: 15px; margin-left: 15px;">
+        </div>
+      </div>
+    </section>
+
+    <!-- حذف القسم القديم للهيدر واستبداله بالقسم الجديد -->
+    <!-- end header -->
+  </header>
+
+  <div id="main-container">
+    <div id="main">
+      <style>
+        body, h1, h2, h3, h4, h5, h6, p, a, span, div {
+            font-family: 'Cairo', sans-serif !important;
+        }
+        
+        
+        
+        /* تحسين الهيدر مع خلفية متحركة */
+        .animated-header {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://dwam-tech.com/wp-content/uploads/2025/06/mobile12.png');
+            background-size: cover;
+            background-position: center;
+            animation: zoomInOut 20s infinite alternate;
+            z-index: 1;
+        }
+        
+        @keyframes zoomInOut {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+        }
+        
+        .header-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+        
+        .header-logo img {
+            width: 120px;
+            height: 120px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .header-logo img:hover {
+            transform: scale(1.05);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .header-text {
+            flex: 1;
+            text-align: right;
+            color: #fff;
+            padding-left: 30px;
+        }
+        
+        .header-image {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .header-image img {
+            max-width: 100%;
+            height: auto;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* تنسيق وحركة زر التواصل */
+        .animated-btn {
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(255, 132, 0, 0.3);
+            transition: all 0.5s ease !important;
+            min-width: 200px;
+            text-align: center;
+        }
+        
+        .animated-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 132, 0, 0.5);
+            padding-right: 45px !important;
+        }
+        
+        .animated-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .animated-btn:hover::before {
+            left: 100%;
+        }
+        
+        .animated-btn::after {
+            content: '→';
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .animated-btn:hover::after {
+            right: 15px;
+            opacity: 1;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 132, 0, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 132, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 132, 0, 0);
+            }
+        }
+        
+        .animated-btn {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @media (max-width: 991px) {
+            .header-content {
+                flex-direction: column-reverse;
+            }
+            
+            .header-text, .header-image {
+                text-align: center;
+                padding: 20px 0;
+            }
+            
+            .header-logo {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .header-logo img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+        </style>
+
+<style>
+  /* تنسيقات قسم خدمات التطبيقات المتحركة */
+  .services-animated-section {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+    z-index: 1;
+  }
+  
+  /* خلفية متحركة */
+  .services-bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(248, 139, 55, 0.03) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(203, 61, 39, 0.03) 100%);
+    z-index: 1;
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+  }
+  
+  /* جزيئات متحركة في الخلفية */
+  .services-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23f88b37" opacity="0.3"/></svg>');
+    background-size: 100px 100px;
+    z-index: 1;
+    opacity: 0.5;
+  }
+  
+  /* زخارف الزوايا */
+  .corner-decoration {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 1;
+    opacity: 0.2;
+  }
+  
+  .corner-decoration-1 {
+    top: 0;
+    right: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,0 L150,0 L150,150 Z" fill="%23f88b37"/></svg>');
+  }
+  
+  .corner-decoration-2 {
+    bottom: 0;
+    left: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,150 L0,0 L150,150 Z" fill="%23cb3d27"/></svg>');
+  }
+  
+  /* عنوان القسم المتحرك */
+  .animated-title {
+    position: relative;
+    display: inline-block;
+    color: #cb3d27;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+  
+  .animated-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #f88b37;
+    animation: widthAnimation 3s ease-in-out infinite;
+  }
+  
+  @keyframes widthAnimation {
+    0% {
+      width: 40px;
+    }
+    50% {
+      width: 120px;
+    }
+    100% {
+      width: 40px;
+    }
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* مربعات الخدمات المتحركة */
+  .service-box {
+    min-height: 320px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    padding: 30px 20px;
+    transition: all 0.5s ease;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    z-index: 2;
+  }
+  
+  .service-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #f88b37, #cb3d27);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+    z-index: 1;
+  }
+  
+  .service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
+  
+  .service-box:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .service-icon {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .service-icon::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(248, 139, 55, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 2s infinite;
+  }
+  
+  .service-icon img {
+    max-height: 80px;
+    max-width: 80px;
+    transition: transform 0.3s ease;
+  }
+  
+  .service-box:hover .service-icon img {
+    transform: scale(1.1);
+  }
+  
+  .service-content h4 {
+    color: #f88b37;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .service-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+  }
+  
+  /* تحسينات للأجهزة المحمولة */
+  @media (max-width: 768px) {
+    .services-animated-section {
+      padding: 60px 0;
+    }
+    
+    .service-box {
+      min-height: auto;
+    }
+  }
+</style>
+
+
+
+
+
+<section id="about-us" class="animated-about-section">
+  <div class="about-bg-animation"></div>
+  <section class="flat-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="flat-section-title text-center" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="animated-title">هل تحتاج إلى تطبيق يُحدث نقلة نوعية في مشروعك؟ 🚀 </h2>
+            <h4 class="subheader animated-text" style="line-height: 1.8; text-align: center; direction: rtl; padding: 0 15px; font-weight: bold;" data-aos="fade-up" data-aos-duration="1200">
+              مع ازدياد الاعتماد على الهواتف الذكية، أصبح وجود تطبيق جوّال خاص بمشروعك أو مؤسستك هو <span style="color: #f88b37; font-weight: bold;" class="highlight-text">الجسر الأقوى للتواصل مع جمهورك</span>، وتعزيز ولائهم، وتحقيق نمو فعلي في المبيعات والخدمات،<br>
+              وفي <span style="color: #f88b37; font-weight: bold;" class="highlight-text">شركة دوام للأعمال التقنية</span>، نوفّر لك خدمة برمجة تطبيقات ذكية بتقنيات عالمية، وبأسلوب تصميم حديث ومتجاوب مع كل الأجهزة
+            </h4>
+            <div class="features-container" data-aos="fade-up" data-aos-duration="1400">
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                <div class="feature-text">تطبيقات متوافقة مع جميع الأجهزة</div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                <div class="feature-text">أداء سريع وفعال</div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="feature-text">حماية وأمان عالي المستوى</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<style>
+  /* تنسيق قسم "هل تحتاج إلى تطبيق" */
+  .animated-about-section {
+    position: relative;
+    padding: 80px 0;
+    overflow: hidden;
+    background-color: #f9f9f9;
+  }
+  
+  .about-bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 132, 0, 0.05) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 132, 0, 0.05) 100%);
+    z-index: 1;
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .animated-about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://dwam-tech.com/wp-content/uploads/2025/06/pattern-bg.png');
+    background-size: cover;
+    opacity: 0.05;
+    z-index: 0;
+  }
+  
+  .animated-about-section .flat-section {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .animated-title {
+    position: relative;
+    display: inline-block;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+  
+  .animated-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #ff8400;
+    animation: widthAnimation 3s ease-in-out infinite;
+  }
+  
+  @keyframes widthAnimation {
+    0% {
+      width: 40px;
+    }
+    50% {
+      width: 120px;
+    }
+    100% {
+      width: 40px;
+    }
+  }
+  
+  
+  
+  .features-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+  }
+  
+  .feature-item {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-icon {
+    font-size: 30px;
+    color: #ff8400;
+    margin-bottom: 15px;
+  }
+  
+  .feature-text {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .features-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .feature-item {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>
+
+<style>
+  /* تنسيقات قسم خدمات التطبيقات المتحركة */
+  .services-animated-section {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+    z-index: 1;
+  }
+  
+  /* خلفية متحركة */
+  .services-bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(248, 139, 55, 0.03) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(203, 61, 39, 0.03) 100%);
+    z-index: 1;
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+  }
+  
+  /* جزيئات متحركة في الخلفية */
+  .services-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23f88b37" opacity="0.3"/></svg>');
+    background-size: 100px 100px;
+    z-index: 1;
+    opacity: 0.5;
+  }
+  
+  /* زخارف الزوايا */
+  .corner-decoration {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 1;
+    opacity: 0.2;
+  }
+  
+  .corner-decoration-1 {
+    top: 0;
+    right: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,0 L150,0 L150,150 Z" fill="%23f88b37"/></svg>');
+  }
+  
+  .corner-decoration-2 {
+    bottom: 0;
+    left: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,150 L0,0 L150,150 Z" fill="%23cb3d27"/></svg>');
+  }
+  
+  /* عنوان القسم المتحرك */
+  .animated-title {
+    position: relative;
+    display: inline-block;
+    color: #cb3d27;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+  
+  .animated-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #f88b37;
+    animation: widthAnimation 3s ease-in-out infinite;
+  }
+  
+  @keyframes widthAnimation {
+    0% {
+      width: 40px;
+    }
+    50% {
+      width: 120px;
+    }
+    100% {
+      width: 40px;
+    }
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* مربعات الخدمات المتحركة */
+  .service-box {
+    min-height: 320px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    padding: 30px 20px;
+    transition: all 0.5s ease;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    z-index: 2;
+  }
+  
+  .service-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #f88b37, #cb3d27);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+    z-index: 1;
+  }
+  
+  .service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
+  
+  .service-box:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .service-icon {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .service-icon::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(248, 139, 55, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 2s infinite;
+  }
+  
+  .service-icon img {
+    max-height: 80px;
+    max-width: 80px;
+    transition: transform 0.3s ease;
+  }
+  
+  .service-box:hover .service-icon img {
+    transform: scale(1.1);
+  }
+  
+  .service-content h4 {
+    color: #f88b37;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .service-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+  }
+  
+  /* تحسينات للأجهزة المحمولة */
+  @media (max-width: 768px) {
+    .services-animated-section {
+      padding: 60px 0;
+    }
+    
+    .service-box {
+      min-height: auto;
+    }
+  }
+</style>
+
+
+
+
+<!-- ===========================================
+		Start "من نحن" section
+============================================ -->
+
+<section id="about-dwam" class="about-section-animated">
+  <div class="about-bg-animation"></div>
+  <div class="about-particles"></div>
+  <div class="corner-decoration corner-decoration-1"></div>
+  <div class="corner-decoration corner-decoration-2"></div>
+  <div class="flat-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+              <div class="flat-section-title text-center" data-aos="fade-up" data-aos-duration="1000">
+                 
+                  <h2 class="animated-title"> من نحن؟<i class="fas fa-users icon-title"></i></h2>
+                  <span class="flat-section-subtitle animated-text" style="font-size: 18px; line-height: 1.8; direction: rtl; text-align: center; display: block; margin-top: 20px;" data-aos="fade-up" data-aos-duration="1200"> 
+                      نحن <span class="highlight-text">شركة دوام للأعمال التقنية</span>، نعمل منذ أكثر من 15 عامًا في تقديم خدمات البرمجة المتخصصة في العالم العربي. 
+                  </span> 
+              </div>
+          </div>
+              
+              <div class="col-md-6 col-sm-12">
+                  <div class="vertical-featured-image-container text-center animated-image" data-aos="fade-left" data-aos-duration="1000">
+                      <img style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);" src="https://dwam-tech.com/wp-content/uploads/2025/06/World-map.gif" alt="شركة دوام للأعمال التقنية">
+                  </div>
+              </div>
+              
+              <div class="col-md-6 col-sm-12">
+                  <div class="info-box1 animated-box" data-aos="fade-right" data-aos-duration="800" style="direction: rtl; text-align: right; margin-bottom: 30px;">
+                      <div class="info-icon"><i class="fas fa-users"></i></div>
+                      <div class="info-box-content">
+                          <h4 class="info-title">فريقنا المحترف</h4>
+                          <h5 class="info-description">
+                              نمتلك فريقًا محترفًا من مهندسي البرمجيات والمصممين ذوي الخبرة العالية في مجال تطوير التطبيقات.
+                          </h5>
+                      </div>
+                  </div>
+                  
+                  <div class="info-box1 animated-box" data-aos="fade-right" data-aos-duration="1000" style="direction: rtl; text-align: right; margin-bottom: 30px;">
+                      <div class="info-icon"><i class="fas fa-globe-asia"></i></div>
+                      <div class="info-box-content">
+                          <h4 class="info-title">نطاق خدماتنا</h4>
+                          <h5 class="info-description">
+                              نخدم عملاء من السعودية، الإمارات، مصر، قطر، الكويت، المغرب، الأردن، ليبيا، وغيرها من الدول العربية.
+                          </h5>
+                      </div>
+                  </div>
+                  
+                  <div class="info-box1 animated-box" data-aos="fade-right" data-aos-duration="1200" style="direction: rtl; text-align: right;">
+                      <div class="info-icon"><i class="fas fa-mobile-alt"></i></div>
+                      <div class="info-box-content">
+                          <h4 class="info-title">خدماتنا المتنوعة</h4>
+                          <h5 class="info-description">
+                              نُطوّر تطبيقات عملية تخدم احتياجات الشركات، المتاجر، الهيئات الخدمية، الجمعيات الخيرية، والمؤسسات الحكومية والخاصة.
+                          </h5>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<style>
+  .about-section-animated::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* طبقة تعتيم سوداء بشفافية 70% */
+  z-index: 1;
+}
+/* تعديل z-index للعناصر الزخرفية */
+.about-bg-animation, .about-particles, .corner-decoration {
+  z-index: 1;
+}
+/* تنسيقات قسم من نحن المحسن */
+.about-section-animated {
+  position: relative;
+  padding: 100px 0;
+  overflow: hidden;
+  background-image: url('https://dwam-tech.com/wp-content/uploads/2025/06/network.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  border-radius: 0 0 50% 50% / 10%;
+  margin-bottom: -50px;
+  z-index: 1;
+}
+
+.about-bg-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(248, 139, 55, 0.05) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(203, 61, 39, 0.05) 100%);
+  z-index: 0;
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+.about-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://dwam-tech.com/wp-content/uploads/2025/06/pattern.png');
+  background-size: cover;
+  opacity: 0.05;
+  z-index: 0;
+}
+
+@keyframes gradientAnimation {
+  0% {
+      background-position: 0% 50%;
+  }
+  50% {
+      background-position: 100% 50%;
+  }
+  100% {
+      background-position: 0% 50%;
+  }
+}
+
+.animated-title {
+  position: relative;
+  display: inline-block;
+  
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.icon-title {
+  margin-left: 10px;
+  color: #f88b37;
+  animation: bounce 2s infinite;
+}
+
+
+.animated-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: #f88b37;
+  animation: widthAnimation 3s ease-in-out infinite;
+}
+.about-section-animated .flat-section-subtitle {
+  color: #f0f0f0;
+}
+.about-section-animated .flat-section {
+  position: relative;
+  z-index: 3; /* زيادة قيمة z-index لتكون أعلى من طبقة التعتيم */
+}
+
+/* تعديل z-index للعناصر الزخرفية */
+.about-bg-animation, .about-particles, .corner-decoration {
+  z-index: 2; /* جعلها أعلى من طبقة التعتيم ولكن أقل من المحتوى */
+}
+
+/* تحسين تباين النصوص */
+.about-section-animated .animated-title {
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 4;
+}
+
+.about-section-animated .flat-section-subtitle {
+  color: #f0f0f0;
+  position: relative;
+  z-index: 4;
+}
+
+/* تحسين تباين الصناديق المعلوماتية */
+.about-section-animated .animated-box {
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 4;
+}
+
+/* تحسين ظهور الصورة */
+.about-section-animated .animated-image {
+  position: relative;
+  z-index: 4;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes widthAnimation {
+  0% {
+      width: 40px;
+  }
+  50% {
+      width: 120px;
+  }
+  100% {
+      width: 40px;
+  }
+}
+
+
+
+.highlight-text {
+  color: #f88b37;
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+ 
+}
+
+.animated-image {
+  position: relative;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.animated-image:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2) !important;
+}
+
+.animated-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(248, 139, 55, 0.2) 0%, rgba(203, 61, 39, 0.2) 100%);
+  opacity: 0;
+  border-radius: 15px;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+.animated-image:hover::before {
+  opacity: 1;
+}
+
+.animated-box {
+  position: relative;
+  padding: 25px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+}
+
+.animated-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.animated-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 0;
+  background: linear-gradient(to bottom, #f88b37, #cb3d27);
+  transition: all 0.5s ease;
+}
+
+.animated-box:hover::before {
+  height: 100%;
+}
+
+.info-icon {
+  margin-left: 15px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #f88b37 0%, #cb3d27 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 5px 15px rgba(248, 139, 55, 0.3);
+  transition: all 0.3s ease;
+}
+
+.animated-box:hover .info-icon {
+  transform: rotateY(360deg);
+  transition: transform 0.8s ease;
+}
+
+.info-title {
+  color: #f88b37;
+  margin-bottom: 10px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.info-description {
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.8;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section-animated {
+      padding: 60px 0;
+  }
+  
+  .animated-box {
+      margin-bottom: 20px !important;
+  }
+}
+</style>
+
+<style>
+  /* تنسيقات قسم خدمات التطبيقات المتحركة */
+  .services-animated-section {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+    z-index: 1;
+  }
+  
+  /* خلفية متحركة */
+  .services-bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(248, 139, 55, 0.03) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(203, 61, 39, 0.03) 100%);
+    z-index: 1;
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+  }
+  
+  /* جزيئات متحركة في الخلفية */
+  .services-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23f88b37" opacity="0.3"/></svg>');
+    background-size: 100px 100px;
+    z-index: 1;
+    opacity: 0.5;
+  }
+  
+  /* زخارف الزوايا */
+  .corner-decoration {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 1;
+    opacity: 0.2;
+  }
+  
+  .corner-decoration-1 {
+    top: 0;
+    right: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,0 L150,0 L150,150 Z" fill="%23f88b37"/></svg>');
+  }
+  
+  .corner-decoration-2 {
+    bottom: 0;
+    left: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,150 L0,0 L150,150 Z" fill="%23cb3d27"/></svg>');
+  }
+  
+  /* عنوان القسم المتحرك */
+  .animated-title {
+    position: relative;
+    display: inline-block;
+    color: #cb3d27;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+  
+  .animated-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #f88b37;
+    animation: widthAnimation 3s ease-in-out infinite;
+  }
+  
+  @keyframes widthAnimation {
+    0% {
+      width: 40px;
+    }
+    50% {
+      width: 120px;
+    }
+    100% {
+      width: 40px;
+    }
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* مربعات الخدمات المتحركة */
+  .service-box {
+    min-height: 320px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    padding: 30px 20px;
+    transition: all 0.5s ease;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    z-index: 2;
+  }
+  
+  .service-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #f88b37, #cb3d27);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
+    z-index: 1;
+  }
+  
+  .service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  }
+  
+  .service-box:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .service-icon {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  .service-icon::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(248, 139, 55, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 2s infinite;
+  }
+  
+  .service-icon img {
+    max-height: 80px;
+    max-width: 80px;
+    transition: transform 0.3s ease;
+  }
+  
+  .service-box:hover .service-icon img {
+    transform: scale(1.1);
+  }
+  
+  .service-content h4 {
+    color: #f88b37;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+  }
+  
+  .service-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(0.95);
+      opacity: 0.7;
+    }
+  }
+  
+  /* تحسينات للأجهزة المحمولة */
+  @media (max-width: 768px) {
+    .services-animated-section {
+      padding: 60px 0;
+    }
+    
+    .service-box {
+      min-height: auto;
+    }
+  }
+</style>
+
+
+
+			<!-- ===========================================
+					Start "خدمات برمجة التطبيقات" section
+			============================================ -->
+
+      <div class="space80"></div>
+      <section id="app-services" class="services-animated-section">
+        <div class="services-bg-animation"></div>
+        <div class="services-particles"></div>
+        <div class="corner-decoration corner-decoration-1"></div>
+        <div class="corner-decoration corner-decoration-2"></div>
+        <div class="flat-section">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="flat-section-title text-center" data-aos="fade-up" data-aos-duration="1000">
+                  <h2 class="animated-title">ماذا نقدم لك في خدمة برمجة التطبيقات الهاتفية؟</h2>
+                <!-- end flat-section-title -->
+                </div>
+              <!-- end col-sm-12 -->
+              </div>
+              
+              <div class="col-md-12">
+                <div class="row">
+                  <!-- خدمة 1 -->
+                  <div class="col-md-6 col-lg-4">
+                    <div class="service-box animated-service-box" data-aos="fade-up" data-aos-delay="100">
+                      <div class="service-icon">
+                        <img src="https://dwam-tech.com/wp-content/uploads/2025/06/flutter-icon.png" alt="Flutter">
+                      </div>
+                      <div class="service-content">
+                        <h4>iOS برمجة تطبيقات أندرويد و</h4>
+                        <p>
+                          تطوير تطبيقات متكاملة لنظامي أندرويد وiOS باستخدام إطار عمل Flutter مع ضمان أداء عالي وتجربة مستخدم مميزة.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- خدمة 2 -->
+                  <div class="col-md-6 col-lg-4">
+                    <div class="service-box animated-service-box" data-aos="fade-up" data-aos-delay="200">
+                      <div class="service-icon">
+                        <img src="https://dwam-tech.com/wp-content/uploads/2025/06/ui-ux-icon.png" alt="UI/UX">
+                      </div>
+                      <div class="service-content">
+                        <h4>تصميم واجهات مستخدم عصرية</h4>
+                        <p>
+                          تصميم واجهات مستخدم سلسة وعصرية (UI/UX) تجمع بين الجمال والوظائف العملية لتحسين تجربة المستخدم.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- خدمة 3 -->
+                  <div class="col-md-6 col-lg-4">
+                    <div class="service-box animated-service-box" data-aos="fade-up" data-aos-delay="300">
+                      <div class="service-icon">
+                        <img src="https://dwam-tech.com/wp-content/uploads/2025/06/integration-icon.png" alt="Integration">
+                      </div>
+                      <div class="service-content">
+                        <h4>ربط التطبيقات بالأنظمة</h4>
+                        <p>
+                          ربط التطبيقات بأنظمة الإدارة أو المواقع الإلكترونية لضمان تكامل البيانات وتحديثها بشكل فوري ومستمر.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- خدمة 4 -->
+                  <div class="col-md-6 col-lg-4">
+                    <div class="service-box animated-service-box" data-aos="fade-up" data-aos-delay="400">
+                      <div class="service-icon">
+                        <img src="https://dwam-tech.com/wp-content/uploads/2025/06/multilanguage-icon.png" alt="Multi-language">
+                      </div>
+                      <div class="service-content">
+                        <h4>دعم اللغات المتعددة</h4>
+                        <p>
+                          تطوير تطبيقات متعددة اللغات لتوسيع نطاق الوصول إلى جمهورك المستهدف في مختلف البلدان والمناطق.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- خدمة 5 -->
+                  <div class="col-md-6 col-lg-4">
+                    <div class="service-box animated-service-box" data-aos="fade-up" data-aos-delay="500">
+                      <div class="service-icon">
+                        <img src="https://dwam-tech.com/wp-content/uploads/2025/06/auth-icon.png" alt="Authentication">
+                      </div>
+                      <div class="service-content">
+                        <h4>أنظمة تسجيل وتوثيق</h4>
+                        <p>
+                          تطوير أنظمة تسجيل دخول وتوثيق آمنة للمستخدمين مع دعم تقنيات التحقق المتعددة وحماية البيانات.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- خدمة 6 -->
+                  <div class="col-md-6 col-lg-4">
+                    <div class="service-box animated-service-box" data-aos="fade-up" data-aos-delay="600">
+                      <div class="service-icon">
+                        <img src="https://dwam-tech.com/wp-content/uploads/2025/06/payment-icon.png" alt="Payment">
+                      </div>
+                      <div class="service-content">
+                        <h4>تكامل مع الخدمات المختلفة</h4>
+                        <p>
+                          تكامل مع الخرائط، الدفع الإلكتروني، التنبيهات، وغيرها من الخدمات لتوفير تجربة متكاملة للمستخدم.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- خدمة 7 -->
+                  <div class="col-md-6 col-lg-4">
+                    <div class="service-box animated-service-box" data-aos="fade-up" data-aos-delay="700">
+                      <div class="service-icon">
+                        <img src="https://dwam-tech.com/wp-content/uploads/2025/06/dashboard-icon.png" alt="Dashboard">
+                      </div>
+                      <div class="service-content">
+                        <h4>لوحة تحكم Dashboard</h4>
+                        <p>
+                          تطوير لوحة تحكم متكاملة لإدارة المحتوى والبيانات بسهولة مع تقارير وإحصائيات تفصيلية.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- خدمة 8 -->
+                  <div class="col-md-6 col-lg-4">
+                    <div class="service-box animated-service-box" data-aos="fade-up" data-aos-delay="800">
+                      <div class="service-icon">
+                        <img src="https://dwam-tech.com/wp-content/uploads/2025/06/testing-icon.png" alt="Testing">
+                      </div>
+                      <div class="service-content">
+                        <h4>اختبارات مكثفة</h4>
+                        <p>
+                          إجراء اختبارات مكثفة لضمان السرعة والأداء والحماية مع التأكد من خلو التطبيق من الأخطاء البرمجية.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- خدمة 9 (اختيارية) -->
+                  <div class="col-md-6 col-lg-4">
+                    <div class="service-box animated-service-box" data-aos="fade-up" data-aos-delay="900">
+                      <div class="service-icon">
+                        <img src="https://dwam-tech.com/wp-content/uploads/2025/06/support-icon.png" alt="Support">
+                      </div>
+                      <div class="service-content">
+                        <h4>دعم فني مستمر</h4>
+                        <p>
+                          توفير دعم فني مستمر بعد إطلاق التطبيق مع تحديثات دورية لضمان استمرارية عمل التطبيق بكفاءة.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            <!-- end row -->
+            </div>
+          <!-- end container -->
+          </div>
+        <!-- end flat-section -->
+        </div>
+      <!-- end app-services section -->
+      </section>
+      <style>
+        /* تنسيقات قسم خدمات التطبيقات المتحركة */
+        .services-animated-section {
+          position: relative;
+          padding: 100px 0;
+          overflow: hidden;
+          background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+          z-index: 1;
+        }
+        
+        /* خلفية متحركة */
+        .services-bg-animation {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, rgba(248, 139, 55, 0.03) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(203, 61, 39, 0.03) 100%);
+          z-index: 1;
+          background-size: 400% 400%;
+          animation: gradientAnimation 15s ease infinite;
+        }
+        
+        /* جزيئات متحركة في الخلفية */
+        .services-particles {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23f88b37" opacity="0.3"/></svg>');
+          background-size: 100px 100px;
+          z-index: 1;
+          opacity: 0.5;
+        }
+        
+        /* زخارف الزوايا */
+        .corner-decoration {
+          position: absolute;
+          width: 150px;
+          height: 150px;
+          z-index: 1;
+          opacity: 0.2;
+        }
+        
+        .corner-decoration-1 {
+          top: 0;
+          right: 0;
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,0 L150,0 L150,150 Z" fill="%23f88b37"/></svg>');
+        }
+        
+        .corner-decoration-2 {
+          bottom: 0;
+          left: 0;
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,150 L0,0 L150,150 Z" fill="%23cb3d27"/></svg>');
+        }
+        
+        /* عنوان القسم المتحرك */
+        .animated-title {
+          position: relative;
+          display: inline-block;
+          color: #cb3d27;
+          margin-bottom: 30px;
+          font-weight: 700;
+        }
+        
+        .animated-title::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 3px;
+          background: #f88b37;
+          animation: widthAnimation 3s ease-in-out infinite;
+        }
+        
+        @keyframes widthAnimation {
+          0% {
+            width: 40px;
+          }
+          50% {
+            width: 120px;
+          }
+          100% {
+            width: 40px;
+          }
+        }
+        
+        @keyframes gradientAnimation {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+        
+        /* مربعات الخدمات المتحركة */
+        .service-box {
+          min-height: 320px;
+          margin-bottom: 30px;
+          border-radius: 15px;
+          box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+          padding: 30px 20px;
+          transition: all 0.5s ease;
+          background-color: #fff;
+          position: relative;
+          overflow: hidden;
+          text-align: center;
+          z-index: 2;
+        }
+        
+        .service-box::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 5px;
+          background: linear-gradient(90deg, #f88b37, #cb3d27);
+          transform: scaleX(0);
+          transform-origin: right;
+          transition: transform 0.5s ease;
+          z-index: 1;
+        }
+        
+        .service-box:hover {
+          transform: translateY(-10px);
+          box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-box:hover::before {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+        
+        .service-icon {
+          height: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 20px;
+          position: relative;
+        }
+        
+        .service-icon::after {
+          content: '';
+          position: absolute;
+          width: 60px;
+          height: 60px;
+          background-color: rgba(248, 139, 55, 0.1);
+          border-radius: 50%;
+          z-index: -1;
+          animation: pulse 2s infinite;
+        }
+        
+        .service-icon img {
+          max-height: 80px;
+          max-width: 80px;
+          transition: transform 0.3s ease;
+        }
+        
+        .service-box:hover .service-icon img {
+          transform: scale(1.1);
+        }
+        
+        .service-content h4 {
+          color: #f88b37;
+          margin-bottom: 15px;
+          transition: color 0.3s ease;
+        }
+        
+        .service-content p {
+          font-size: 16px;
+          line-height: 1.6;
+          transition: color 0.3s ease;
+        }
+        
+        @keyframes pulse {
+          0% {
+            transform: scale(0.95);
+            opacity: 0.7;
+          }
+          50% {
+            transform: scale(1.05);
+            opacity: 0.3;
+          }
+          100% {
+            transform: scale(0.95);
+            opacity: 0.7;
+          }
+        }
+        
+        /* تحسينات للأجهزة المحمولة */
+        @media (max-width: 768px) {
+          .services-animated-section {
+            padding: 60px 0;
+          }
+          
+          .service-box {
+            min-height: auto;
+          }
+        }
+      </style>
+
+<!-- ===========================================
+  End "خدمات برمجة التطبيقات" section
+============================================ -->
+
+
+
+
+<!-- قسم لمن نقدم خدماتنا؟ -->  
+<section id="our-clients" class="our-clients-section" style="padding: 100px 0; position: relative; overflow: hidden; direction: rtl; background-image: url(https://dwam-tech.com/wp-content/uploads/2025/06/download\ \(188\).jpeg); background-repeat: no-repeat; background-size: cover;">
+  <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 2;"></div>
+
+  <!-- عناصر زخرفية خلفية -->
+  <div class="background-elements" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;">
+    <!-- أشكال هندسية متحركة -->
+    <div class="bg-shape" style="position: absolute; top: 10%; right: 5%; width: 200px; height: 200px; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; background: rgba(255, 132, 0, 0.05); animation: morph 20s infinite alternate ease-in-out;"></div>
+    <div class="bg-shape" style="position: absolute; bottom: 10%; left: 5%; width: 180px; height: 180px; border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; background: rgba(255, 255, 255, 0.03); animation: morph 15s infinite alternate ease-in-out; animation-delay: 1s;"></div>
+    
+    <!-- خطوط متقطعة متحركة -->
+    <div class="dashed-line" style="position: absolute; top: 30%; right: 0; width: 100%; height: 1px; background: repeating-linear-gradient(to right, rgba(255, 132, 0, 0.1) 0, rgba(255, 132, 0, 0.1) 6px, transparent 6px, transparent 12px); animation: slide-left 20s infinite linear;"></div>
+    <div class="dashed-line" style="position: absolute; bottom: 40%; left: 0; width: 100%; height: 1px; background: repeating-linear-gradient(to right, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.05) 6px, transparent 6px, transparent 12px); animation: slide-right 25s infinite linear;"></div>
+  </div>
+  
+  <div class="container" style="position: relative; z-index: 2;">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center" data-aos="fade-up" data-aos-duration="1000">
+        <h2 style="font-size: 36px; font-weight: 700; color: #ffffff; margin-bottom: 30px; position: relative; display: inline-block;">
+          <span style="position: relative;">
+            لمن نقدم خدماتنا؟
+            <span style="position: absolute; bottom: -10px; right: 0; width: 100%; height: 3px; background: linear-gradient(to right, #ff5800, #ff8400);"></span>
+          </span>
+        </h2>
+        
+      </div>
+    </div>
+    
+    <div class="row">
+      <!-- بطاقات العملاء المستهدفين -->
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="client-card" style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; overflow: hidden; height: 100%; transition: all 0.3s ease; position: relative; padding: 30px; border-bottom: 3px solid #ff8400;">
+          <div class="client-icon" style="width: 70px; height: 70px; background: rgba(255, 132, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: all 0.3s ease;">
+            <i class="fas fa-building" style="font-size: 30px; color: #ff8400;"></i>
+          </div>
+          <h3 style="font-size: 22px; color: #ffffff; margin-bottom: 15px;">
+            <span style="color: #ff8400;">🔹</span> 	الشركات والمؤسسات
+          </h3>
+          <div class="client-hover-content" style="height: 0; overflow: hidden; transition: height 0.3s ease;">
+            <p style="font-size: 16px; color: #e0e0e0; line-height: 1.6;">
+              الشركات والمؤسسات التي ترغب بتطبيق يسهل الوصول لخدماتها
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="client-card" style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; overflow: hidden; height: 100%; transition: all 0.3s ease; position: relative; padding: 30px; border-bottom: 3px solid #ff8400;">
+          <div class="client-icon" style="width: 70px; height: 70px; background: rgba(255, 132, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: all 0.3s ease;">
+            <i class="fas fa-shopping-cart" style="font-size: 30px; color: #ff8400;"></i>
+          </div>
+          <h3 style="font-size: 22px; color: #ffffff; margin-bottom: 15px;">
+            <span style="color: #ff8400;">🔹</span> المتاجر الإلكترونية
+          </h3>
+          <div class="client-hover-content" style="height: 0; overflow: hidden; transition: height 0.3s ease;">
+            <p style="font-size: 16px; color: #e0e0e0; line-height: 1.6;">
+              المتاجر التي تسعى لتطبيق بيع مباشر وربط وسائل الدفع
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="client-card" style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; overflow: hidden; height: 100%; transition: all 0.3s ease; position: relative; padding: 30px; border-bottom: 3px solid #ff8400;">
+          <div class="client-icon" style="width: 70px; height: 70px; background: rgba(255, 132, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: all 0.3s ease;">
+            <i class="fas fa-graduation-cap" style="font-size: 30px; color: #ff8400;"></i>
+          </div>
+          <h3 style="font-size: 22px; color: #ffffff; margin-bottom: 15px;">
+            <span style="color: #ff8400;">🔹</span> المؤسسات التعليمية
+          </h3>
+          <div class="client-hover-content" style="height: 0; overflow: hidden; transition: height 0.3s ease;">
+            <p style="font-size: 16px; color: #e0e0e0; line-height: 1.6;">
+              المدارس والمعاهد والمراكز التعليمية
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="client-card" style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; overflow: hidden; height: 100%; transition: all 0.3s ease; position: relative; padding: 30px; border-bottom: 3px solid #ff8400;">
+          <div class="client-icon" style="width: 70px; height: 70px; background: rgba(255, 132, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: all 0.3s ease;">
+            <i class="fas fa-heart" style="font-size: 30px; color: #ff8400;"></i>
+          </div>
+          <h3 style="font-size: 22px; color: #ffffff; margin-bottom: 15px;">
+            <span style="color: #ff8400;">🔹</span> المبادرات الاجتماعية
+          </h3>
+          <div class="client-hover-content" style="height: 0; overflow: hidden; transition: height 0.3s ease;">
+            <p style="font-size: 16px; color: #e0e0e0; line-height: 1.6;">
+              المبادرات الاجتماعية والمنصات الدعوية
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+        <div class="client-card" style="background: rgba(255, 255, 255, 0.05); border-radius: 15px; overflow: hidden; height: 100%; transition: all 0.3s ease; position: relative; padding: 30px; border-bottom: 3px solid #ff8400;">
+          <div class="client-icon" style="width: 70px; height: 70px; background: rgba(255, 132, 0, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: all 0.3s ease;">
+            <i class="fas fa-users" style="font-size: 30px; color: #ff8400;"></i>
+          </div>
+          <h3 style="font-size: 22px; color: #ffffff; margin-bottom: 15px;">
+            <span style="color: #ff8400;">🔹</span> تطبيقات إدارية داخلية
+          </h3>
+          <div class="client-hover-content" style="height: 0; overflow: hidden; transition: height 0.3s ease;">
+            <p style="font-size: 16px; color: #e0e0e0; line-height: 1.6;">
+              تطبيقات داخلية لإدارة الموظفين والبيانات
+            </p>
+          </div>
+        </div>
+      </div>
+      
+     
+    </div>
+  </div>
+  
+  <!-- تأثيرات CSS للبطاقات -->
+  <style>
+    /* تأثيرات تفاعلية للبطاقات */
+    .client-card {
+      transform: translateY(0);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .client-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(255, 132, 0, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    
+    .client-card:hover .client-icon {
+      background: rgba(255, 132, 0, 0.2);
+      transform: scale(1.1);
+    }
+    
+    .client-card:hover .client-hover-content {
+      height: 80px;
+    }
+    
+    /* تأثيرات الحركة */
+    @keyframes morph {
+      0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+      100% { border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%; }
+    }
+    
+    @keyframes slide-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    
+    @keyframes slide-right {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(0); }
+    }
+    
+    /* تجاوب مع الشاشات المختلفة */
+    @media (max-width: 768px) {
+      .client-card h3 {
+        font-size: 18px;
+      }
+      
+      .client-card:hover .client-hover-content {
+        height: 100px;
+      }
+    }
+  </style>
+  
+  <!-- سكريبت للتأثيرات التفاعلية -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // تفعيل تأثيرات AOS للظهور التدريجي
+      AOS.init();
+      
+      // إضافة تأثيرات تفاعلية للبطاقات
+      const clientCards = document.querySelectorAll('.client-card');
+      
+      clientCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          const hoverContent = this.querySelector('.client-hover-content');
+          hoverContent.style.height = hoverContent.scrollHeight + 'px';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          const hoverContent = this.querySelector('.client-hover-content');
+          hoverContent.style.height = '0';
+        });
+      });
+    });
+  </script>
+</section>
+
+
+
+
+<!-- قسم لماذا تحتاج مؤسستك إلى تطبيق جوّال -->
+<section class="why-mobile-app-section">
+  <!-- خلفية متحركة -->
+  <div class="why-app-bg"></div>
+  <div class="why-app-overlay"></div>
+  
+  <!-- أشكال زخرفية متحركة -->
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+  
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- النص والمعلومات -->
+      <div class="col-lg-6 col-md-12">
+        <div class="why-app-content" data-aos="fade-left" data-aos-duration="1000">
+          <div class="section-title">
+            <h2 class="animated-title">💡 لماذا تحتاج مؤسستك إلى تطبيق جوّال؟</h2>
+          </div>
+          
+          <div class="why-app-features" >
+            <!-- ميزة 1 -->
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="100" style="width: 500px;margin-bottom:10px">
+              <div class="feature-icon">
+                <i class="fas fa-mobile-alt" style="color: #f5f5f5;"></i>
+              </div>
+              <div class="feature-text">
+                <p class="feature-stat" style="color: #f78d3d;">85%</p>
+                <p class="feature-desc">من مستخدمي الإنترنت يتصفحون عبر الهاتف</p>
+              </div>
+            </div>
+            
+            <!-- ميزة 2 -->
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="200"style="width: 500px;margin-bottom:10px" >
+              <div class="feature-icon">
+                <i class="fas fa-clock"style="color: #f5f5f5;"></i>
+              </div>
+              <div class="feature-text">
+                <p class="feature-highlight">وصول سريع</p>
+                <p class="feature-desc">سهولة الوصول من أي مكان وفي أي وقت</p>
+              </div>
+            </div>
+            
+            <!-- ميزة 3 -->
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="300"style="width: 500px;margin-bottom:10px">
+              <div class="feature-icon">
+                <i class="fas fa-chart-line"style="color: #f5f5f5;"></i>
+              </div>
+              <div class="feature-text">
+                <p class="feature-highlight">زيادة التفاعل</p>
+                <p class="feature-desc">زيادة معدل التفاعل والمبيعات بشكل ملحوظ</p>
+              </div>
+            </div>
+            
+            <!-- ميزة 4 -->
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="400"style="width: 500px;margin-bottom:10px">
+              <div class="feature-icon"style="color: #f5f5f5;">
+                <i class="fas fa-trademark"></i>
+              </div>
+              <div class="feature-text">
+                <p class="feature-highlight">تقوية العلامة</p>
+                <p class="feature-desc">تقوية علامتك التجارية في السوق</p>
+              </div>
+            </div>
+            
+            <!-- ميزة 5 -->
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="500"style="width: 500px; margin-bottom:10px">
+              <div class="feature-icon">
+                <i class="fas fa-database"style="color: #f5f5f5;"></i>
+              </div>
+              <div class="feature-text">
+                <p class="feature-highlight">تحليل البيانات</p>
+                <p class="feature-desc">جمع وتحليل بيانات المستخدمين وتحسين القرار</p>
+              </div>
+            </div>
+            
+            <!-- ميزة 6 -->
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="600"style="width: 500px;">
+              <div class="feature-icon">
+                <i class="fas fa-trophy"style="color: #f5f5f5;"></i>
+              </div>
+              <div class="feature-text">
+                <p class="feature-highlight">مواكبة المنافسة</p>
+                <p class="feature-desc">مواكبة المنافسة وتحقيق الانتشار</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="why-app-cta" data-aos="fade-up" data-aos-delay="700">
+            <a href="https://wa.me/201555855857" class="btn-custom animated-btn">احصل على تطبيقك الآن</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- الصورة -->
+      <div class="col-lg-6 col-md-12">
+        <div class="why-app-image" data-aos="fade-right" data-aos-duration="1000">
+          <img src="https://dwam-tech.com/wp-content/uploads/2025/06/mapp.jpeg" alt="تطوير تطبيقات الجوال">
+          <div class="image-shape"></div>
+          <div class="floating-icon icon-1"><i class="fab fa-android"></i></div>
+          <div class="floating-icon icon-2"><i class="fab fa-apple"></i></div>
+          <div class="floating-icon icon-3"><i class="fas fa-code"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* تنسيقات قسم لماذا تحتاج مؤسستك إلى تطبيق جوّال */
+  .why-mobile-app-section {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .why-app-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f9f9f9;
+    z-index: -2;
+  }
+  
+  .why-app-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 139, 55, 0.05) 100%);
+    z-index: -1;
+  }
+  
+  /* أشكال زخرفية متحركة */
+  .floating-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  .shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+  }
+  
+  .shape-1 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #f88b37 0%, #cb3d27 100%);
+    top: -150px;
+    right: -150px;
+    animation: float-shape-1 15s infinite alternate ease-in-out;
+  }
+  
+  .shape-2 {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #cb3d27 0%, #f88b37 100%);
+    bottom: -100px;
+    left: -100px;
+    animation: float-shape-2 12s infinite alternate-reverse ease-in-out;
+  }
+  
+  .shape-3 {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #f88b37 0%, #cb3d27 100%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: float-shape-3 20s infinite alternate ease-in-out;
+  }
+  
+  @keyframes float-shape-1 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50px, 50px) rotate(360deg);
+    }
+  }
+  
+  @keyframes float-shape-2 {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+      transform: translate(50px, -30px) rotate(-360deg);
+    }
+  }
+  
+  @keyframes float-shape-3 {
+    0% {
+      transform: translate(-50%, -50%) scale(0.8) rotate(0deg);
+      opacity: 0.05;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.2) rotate(180deg);
+      opacity: 0.1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(0.8) rotate(360deg);
+      opacity: 0.05;
+    }
+  }
+  
+  /* عنوان القسم */
+  .animated-title {
+    position: relative;
+    display: inline-block;
+    color: #cb3d27;
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 32px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  .animated-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    right: 0;
+    width: 80px;
+    height: 3px;
+    background: #f88b37;
+    animation: widthAnimation 3s ease-in-out infinite;
+  }
+  
+  @keyframes widthAnimation {
+    0% {
+      width: 40px;
+    }
+    50% {
+      width: 120px;
+    }
+    100% {
+      width: 40px;
+    }
+  }
+  
+  /* محتوى القسم */
+  .why-app-content {
+    padding: 20px;
+    text-align: right;
+  }
+  
+  /* ميزات التطبيق */
+  .why-app-features {
+    margin-top: 30px;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+  }
+  
+  .feature-item:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transform: translateX(-5px);
+  }
+  
+  .feature-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #f88b37 0%, #cb3d27 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    position: relative;
+    transition: all 0.5s ease;
+    box-shadow: 0 5px 15px rgba(203, 61, 39, 0.2);
+  }
+  
+  .feature-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid rgba(248, 139, 55, 0.3);
+    animation: pulse-ring 2s infinite;
+  }
+  
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+  }
+  
+  .feature-item:hover .feature-icon {
+    transform: rotateY(180deg);
+  }
+  
+  .feature-icon i {
+    color: #ffffff;
+    font-size: 24px;
+    transition: all 0.5s ease;
+  }
+  
+  .feature-item:hover .feature-icon i {
+    transform: rotateY(180deg);
+  }
+  
+  .feature-text {
+    flex: 1;
+  }
+  
+  .feature-stat {
+    color: #cb3d27;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    line-height: 1;
+  }
+  
+  .feature-highlight {
+    color: #f88b37;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    line-height: 1.2;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .feature-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    width: 0;
+    height: 2px;
+    background: #cb3d27;
+    transition: width 0.3s ease;
+  }
+  
+  .feature-item:hover .feature-highlight::after {
+    width: 100%;
+  }
+  
+  .feature-desc {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  
+  /* زر الدعوة للعمل */
+  .why-app-cta {
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .why-app-cta .btn-custom {
+    background: linear-gradient(135deg, #f88b37 0%, #cb3d27 100%);
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(248, 139, 55, 0.3);
+  }
+  
+  .why-app-cta .btn-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(203, 61, 39, 0.3);
+  }
+  
+  .why-app-cta .btn-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.5s ease;
+  }
+  
+  .why-app-cta .btn-custom:hover::before {
+    left: 100%;
+  }
+  
+  /* صورة القسم */
+  .why-app-image {
+    position: relative;
+    text-align: center;
+  }
+  
+  .why-app-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .image-shape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 20px;
+    left: 20px;
+    background: linear-gradient(135deg, #f88b37 0%, #cb3d27 100%);
+    border-radius: 20px;
+    z-index: 0;
+    opacity: 0.2;
+  }
+  
+  /* أيقونات عائمة حول الصورة */
+  .floating-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+  }
+  
+  .floating-icon i {
+    font-size: 24px;
+    color: #f88b37;
+  }
+  
+  .icon-1 {
+    top: 20%;
+    left: 0;
+    animation: float-icon 4s ease-in-out infinite;
+  }
+  
+  .icon-2 {
+    top: 70%;
+    right: 0;
+    animation: float-icon 5s ease-in-out infinite 1s;
+  }
+  
+  .icon-3 {
+    bottom: 10%;
+    left: 30%;
+    animation: float-icon 6s ease-in-out infinite 2s;
+  }
+  
+  @keyframes float-icon {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(10deg);
+    }
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+  }
+  
+  /* تحسينات للأجهزة المحمولة */
+  @media (max-width: 991px) {
+    .why-mobile-app-section {
+      padding: 60px 0;
+    }
+    
+    .animated-title {
+      font-size: 28px;
+      text-align: center;
+    }
+    
+    .animated-title::after {
+      right: 50%;
+      transform: translateX(50%);
+    }
+    
+    .why-app-content {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+    
+    .feature-item {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .feature-icon {
+      margin-left: 0;
+      margin-bottom: 15px;
+    }
+    
+    .why-app-image {
+      margin-top: 30px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .animated-title {
+      font-size: 24px;
+    }
+    
+    .feature-item {
+      padding: 10px;
+    }
+    
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .feature-icon i {
+      font-size: 20px;
+    }
+    
+    .feature-stat {
+      font-size: 24px;
+    }
+    
+    .feature-highlight {
+      font-size: 18px;
+    }
+    
+    .feature-desc {
+      font-size: 14px;
+    }
+  }
+  .feature-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+    width: 48%;
+    margin: 0;
+  }
+  
+  .feature-item:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-5px);
+  }
+  
+  /* تحسينات للأجهزة المحمولة */
+  @media (max-width: 767px) {
+    .feature-row {
+      flex-direction: column;
+    }
+    
+    .feature-item {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+  
+</style>
+
+<!-- ===========================================
+		Start "التقنيات التي نستخدمها" section
+============================================ -->
+
+<section id="technologies" class="wow fadeIn" style="position: relative; overflow: hidden; padding: 80px 0;">
+  <!-- خلفية متحركة -->
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1;">
+      <div class="particles-js" id="particles-js" style="width: 100%; height: 100%;"></div>
+  </div>
+  
+  <!-- طبقة تغطية للخلفية -->
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(203, 61, 39, 0.9) 0%, rgba(248, 139, 55, 0.85) 100%); z-index: -1;"></div>
+  
+  <div class="container">
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="flat-section-title text-center">
+                  <h2 style="color: #ffffff; margin-bottom: 40px;"> التقنيات التي نستخدمها</h2>
+              <!-- end flat-section-title -->
+              </div>
+          <!-- end col-sm-12 -->
+          </div>
+          
+          <div class="col-md-12">
+              <div class="row">
+                  <!-- تقنية 1: Flutter -->
+                  <div class="col-md-6 col-lg-3" data-aos="fade-right" data-aos-duration="1000">
+                      <div class="tech-box wow fadeInUp" data-wow-delay="0.1s" style="background-color: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 30px; margin-bottom: 30px; text-align: center; min-height: 300px; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                          <div style="height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                              <img src="https://dwam-tech.com/wp-content/uploads/2025/06/flutter-icon.png" alt="Flutter" style="max-height: 80px; max-width: 80px;">
+                          </div>
+                          <h4 style="color: #cb3d27; margin-bottom: 15px; font-weight: bold;">Flutter</h4>
+                          <p style="font-size: 16px; line-height: 1.6; direction: rtl;">
+                              لبرمجة التطبيقات لأنظمة أندرويد وiOS من قاعدة واحدة، 
+                          </p>
+                      </div>
+                  </div>
+                  
+                  <!-- تقنية 2: Firebase -->
+                  <div class="col-md-6 col-lg-3"data-aos="fade-right" data-aos-duration="2000">
+                      <div class="tech-box wow fadeInUp" data-wow-delay="0.2s" style="background-color: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 30px; margin-bottom: 30px; text-align: center; min-height: 300px; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                          <div style="height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                              <img src="https://dwam-tech.com/wp-content/uploads/2025/06/firebase-logo.png" alt="Firebase" style="max-height: 80px; max-width: 80px;">
+                          </div>
+                          <h4 style="color: #cb3d27; margin-bottom: 15px; font-weight: bold;">Firebase</h4>
+                          <p style="font-size: 16px; line-height: 1.6; direction: rtl;">
+                          للتوثيق والإشعارات والتخزين السحابي
+                          </p>
+                      </div>
+                  </div>
+                  
+                  <!-- تقنية 3: Strapi -->
+                  <div class="col-md-6 col-lg-3" data-aos="fade-right" data-aos-duration="3000">
+                      <div class="tech-box wow fadeInUp" data-wow-delay="0.3s" style="background-color: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 30px; margin-bottom: 30px; text-align: center; min-height: 300px; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                          <div style="height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                              <img src="https://dwam-tech.com/wp-content/uploads/2025/06/strapi-logo.png" alt="Strapi" style="max-height: 80px; max-width: 80px;">
+                          </div>
+                          <h4 style="color: #cb3d27; margin-bottom: 15px; font-weight: bold;">Strapi</h4>
+                          <p style="font-size: 16px; line-height: 1.6; direction: rtl;">
+                              لإدارة المحتوى وربطه باللوحات الإدارية
+                          </p>
+                      </div>
+                  </div>
+                  
+                  <!-- تقنية 4: Next.js -->
+                  <div class="col-md-6 col-lg-3"data-aos="fade-right" data-aos-duration="4000">
+                      <div class="tech-box wow fadeInUp" data-wow-delay="0.4s" style="background-color: rgba(255, 255, 255, 0.95); border-radius: 15px; padding: 30px; margin-bottom: 30px; text-align: center; min-height: 300px; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+                          <div style="height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                              <img src="https://dwam-tech.com/wp-content/uploads/2025/06/next.png" alt="Next.js" style="max-height: 80px; max-width: 80px;">
+                          </div>
+                          <h4 style="color: #cb3d27; margin-bottom: 15px; font-weight: bold;">Next.js</h4>
+                          <p style="font-size: 16px; line-height: 1.6; direction: rtl;">
+                              لتصميم لوحات التحكم السريعة والتفاعلية
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- إضافة مكتبة particles.js للخلفية المتحركة -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      if (typeof particlesJS !== 'undefined') {
+          particlesJS("particles-js", {
+              "particles": {
+                  "number": {
+                      "value": 80,
+                      "density": {
+                          "enable": true,
+                          "value_area": 800
+                      }
+                  },
+                  "color": {
+                      "value": "#ffffff"
+                  },
+                  "shape": {
+                      "type": "circle",
+                      "stroke": {
+                          "width": 0,
+                          "color": "#000000"
+                      },
+                      "polygon": {
+                          "nb_sides": 5
+                      }
+                  },
+                  "opacity": {
+                      "value": 0.5,
+                      "random": false,
+                      "anim": {
+                          "enable": false,
+                          "speed": 1,
+                          "opacity_min": 0.1,
+                          "sync": false
+                      }
+                  },
+                  "size": {
+                      "value": 3,
+                      "random": true,
+                      "anim": {
+                          "enable": false,
+                          "speed": 40,
+                          "size_min": 0.1,
+                          "sync": false
+                      }
+                  },
+                  "line_linked": {
+                      "enable": true,
+                      "distance": 150,
+                      "color": "#ffffff",
+                      "opacity": 0.4,
+                      "width": 1
+                  },
+                  "move": {
+                      "enable": true,
+                      "speed": 6,
+                      "direction": "none",
+                      "random": false,
+                      "straight": false,
+                      "out_mode": "out",
+                      "bounce": false,
+                      "attract": {
+                          "enable": false,
+                          "rotateX": 600,
+                          "rotateY": 1200
+                      }
+                  }
+              },
+              "interactivity": {
+                  "detect_on": "canvas",
+                  "events": {
+                      "onhover": {
+                          "enable": true,
+                          "mode": "repulse"
+                      },
+                      "onclick": {
+                          "enable": true,
+                          "mode": "push"
+                      },
+                      "resize": true
+                  },
+                  "modes": {
+                      "grab": {
+                          "distance": 400,
+                          "line_linked": {
+                              "opacity": 1
+                          }
+                      },
+                      "bubble": {
+                          "distance": 400,
+                          "size": 40,
+                          "duration": 2,
+                          "opacity": 8,
+                          "speed": 3
+                      },
+                      "repulse": {
+                          "distance": 200,
+                          "duration": 0.4
+                      },
+                      "push": {
+                          "particles_nb": 4
+                      },
+                      "remove": {
+                          "particles_nb": 2
+                      }
+                  }
+              },
+              "retina_detect": true
+          });
+      }
+  });
+</script>
+
+<!-- ===========================================
+  End "التقنيات التي نستخدمها" section
+============================================ -->
+
+<!-- ===========================================
+		Start "مراحل تنفيذ التطبيق" section
+============================================ -->
+
+<section id="app-development-stages" class="app-stages-section">
+  <!-- خلفية متحركة -->
+  <div class="stages-bg-animation"></div>
+  
+  <!-- جزيئات متحركة في الخلفية -->
+  <div class="stages-particles"></div>
+  
+  <!-- زخارف الزوايا -->
+  <div class="corner-decoration corner-decoration-stages-1"></div>
+  <div class="corner-decoration corner-decoration-stages-2"></div>
+  
+  <div class="flat-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="flat-section-title text-center" data-aos="fade-up" data-aos-duration="800">
+            <h2 class="stages-animated-title">🎯 مراحل تنفيذ التطبيق لدينا</h2>
+          </div>
+        </div>
+        
+        <!-- هنا يمكنك إضافة محتوى مراحل التنفيذ -->
+        <div class="col-sm-12">
+          <div class="stages-timeline" data-aos="fade-up" data-aos-delay="200">
+            <!-- المرحلة 1 -->
+            <div class="stage-item">
+              <div class="stage-number">1</div>
+              <div class="stage-content">
+                <div class="stage-icon">
+                  <i class="fas fa-lightbulb"></i>
+                </div>
+                <h4>تحليل الفكرة</h4>
+                <p>دراسة متطلبات المشروع وتحليل الفكرة بشكل كامل</p>
+              </div>
+            </div>
+            
+            <!-- المرحلة 2 -->
+            <div class="stage-item">
+              <div class="stage-number">2</div>
+              <div class="stage-content">
+                <div class="stage-icon">
+                  <i class="fas fa-pencil-ruler"></i>
+                </div>
+                <h4>التصميم</h4>
+                <p>تصميم واجهات المستخدم وتجربة المستخدم بشكل احترافي</p>
+              </div>
+            </div>
+            
+            <!-- المرحلة 3 -->
+            <div class="stage-item">
+              <div class="stage-number">3</div>
+              <div class="stage-content">
+                <div class="stage-icon">
+                  <i class="fas fa-code"></i>
+                </div>
+                <h4>البرمجة</h4>
+                <p>برمجة التطبيق باستخدام أحدث التقنيات والمعايير</p>
+              </div>
+            </div>
+            
+            <!-- المرحلة 4 -->
+            <div class="stage-item">
+              <div class="stage-number">4</div>
+              <div class="stage-content">
+                <div class="stage-icon">
+                  <i class="fas fa-vial"></i>
+                </div>
+                <h4>الاختبار</h4>
+                <p>اختبار التطبيق للتأكد من جودته وخلوه من الأخطاء</p>
+              </div>
+            </div>
+            
+            <!-- المرحلة 5 -->
+            <div class="stage-item">
+              <div class="stage-number">5</div>
+              <div class="stage-content">
+                <div class="stage-icon">
+                  <i class="fas fa-rocket"></i>
+                </div>
+                <h4>الإطلاق</h4>
+                <p>نشر التطبيق على متاجر التطبيقات وإطلاقه للمستخدمين</p>
+              </div>
+            </div>
+            
+            <!-- المرحلة 6 -->
+            <div class="stage-item">
+              <div class="stage-number">6</div>
+              <div class="stage-content">
+                <div class="stage-icon">
+                  <i class="fas fa-cogs"></i>
+                </div>
+                <h4>الدعم والتطوير</h4>
+                <p>تقديم الدعم الفني المستمر وتطوير التطبيق بشكل دوري</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* تنسيقات قسم مراحل تنفيذ التطبيق */
+  .app-stages-section {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+    z-index: 1;
+  }
+  
+  /* خلفية متحركة */
+  .stages-bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(248, 139, 55, 0.03) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(203, 61, 39, 0.03) 100%);
+    z-index: 1;
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+  }
+  
+  /* جزيئات متحركة في الخلفية */
+  .stages-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23f88b37" opacity="0.3"/></svg>');
+    background-size: 100px 100px;
+    z-index: 1;
+    opacity: 0.5;
+  }
+  
+  /* زخارف الزوايا */
+  .corner-decoration-stages-1 {
+    top: 0;
+    right: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,0 L150,0 L150,150 Z" fill="%23f88b37"/></svg>');
+  }
+  
+  .corner-decoration-stages-2 {
+    bottom: 0;
+    left: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,150 L0,0 L150,150 Z" fill="%23cb3d27"/></svg>');
+  }
+  
+  /* عنوان القسم المتحرك */
+  .stages-animated-title {
+    position: relative;
+    display: inline-block;
+    color: #cb3d27;
+    margin-bottom: 50px;
+    font-weight: 700;
+    font-size: 32px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  .stages-animated-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #f88b37;
+    animation: widthAnimation 3s ease-in-out infinite;
+  }
+  
+  /* تنسيق الجدول الزمني للمراحل */
+  .stages-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+  
+  .stages-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #f88b37, #cb3d27);
+    border-radius: 2px;
+  }
+  
+  .stage-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 50px;
+  }
+  
+  .stage-number {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #f88b37 0%, #cb3d27 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 3;
+    box-shadow: 0 5px 15px rgba(203, 61, 39, 0.3);
+  }
+  
+  .stage-content {
+    width: 45%;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    z-index: 2;
+  }
+  
+  .stage-item:nth-child(odd) .stage-content {
+    margin-right: auto;
+    margin-left: 0;
+    text-align: right;
+  }
+  
+  .stage-item:nth-child(even) .stage-content {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: left;
+  }
+  
+  .stage-item:hover .stage-content {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  
+  .stage-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #f88b37 0%, #cb3d27 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    position: relative;
+    transition: all 0.5s ease;
+    box-shadow: 0 5px 15px rgba(203, 61, 39, 0.2);
+  }
+  
+  .stage-item:nth-child(odd) .stage-icon {
+    margin-right: auto;
+    margin-left: 0;
+  }
+  
+  .stage-item:nth-child(even) .stage-icon {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  
+  .stage-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid rgba(248, 139, 55, 0.3);
+    animation: pulse-ring 2s infinite;
+  }
+  
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.8;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+  }
+  
+  .stage-item:hover .stage-icon {
+    transform: rotateY(180deg);
+  }
+  
+  .stage-icon i {
+    color: #ffffff;
+    font-size: 24px;
+    transition: all 0.5s ease;
+  }
+  
+  .stage-item:hover .stage-icon i {
+    transform: rotateY(180deg);
+  }
+  
+  .stage-content h4 {
+    color: #f88b37;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .stage-item:hover .stage-content h4 {
+    color: #cb3d27;
+  }
+  
+  .stage-content p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  
+  /* تحسينات للأجهزة المحمولة */
+  @media (max-width: 991px) {
+    .app-stages-section {
+      padding: 60px 0;
+    }
+    
+    .stages-animated-title {
+      font-size: 28px;
+    }
+    
+    .stages-timeline::before {
+      left: 30px;
+    }
+    
+    .stage-number {
+      left: 30px;
+    }
+    
+    .stage-content {
+      width: calc(100% - 60px);
+      margin-left: 60px !important;
+      margin-right: 0 !important;
+      text-align: right !important;
+    }
+    
+    .stage-icon {
+      margin-right: auto !important;
+      margin-left: 0 !important;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .stages-animated-title {
+      font-size: 24px;
+    }
+    
+    .stage-content {
+      padding: 15px;
+    }
+    
+    .stage-icon {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .stage-icon i {
+      font-size: 20px;
+    }
+    
+    .stage-content h4 {
+      font-size: 18px;
+    }
+    
+    .stage-content p {
+      font-size: 14px;
+    }
+  }
+</style>
+
+
+<!-- ===========================================
+  End "مراحل تنفيذ التطبيق" section
+============================================ -->
+<!-- =========================================== 
+ 	 	 Start "خصومات حصرية" section 
+ ============================================ --> 
+ 
+ <section id="charity-discount" class="discount-section" >
+  <!-- خلفية متحركة -->
+  <div class="discount-bg-animation"></div>
+  
+  <!-- جزيئات متحركة في الخلفية -->
+  <div class="discount-particles"></div>
+  
+  <!-- زخارف الزوايا -->
+  <div class="corner-decoration corner-decoration-discount-1"></div>
+  <div class="corner-decoration corner-decoration-discount-2"></div>
+  
+  <div class="flat-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="charity-box wow fadeIn" data-aos="fade-up" data-aos-duration="800">
+            <div class="row">
+              <div class="col-md-3 col-sm-12 text-center">
+                <div class="charity-icon" data-aos="zoom-in" data-aos-delay="200">
+                  
+                  <img src="https://dwam-tech.com/wp-content/uploads/2025/06/sale1.jpeg" alt="خصومات حصرية" class="discount-image">
+                </div>
+              </div>
+              
+              <div class="col-md-9 col-sm-12">
+                <div class="charity-content" data-aos="fade-left" data-aos-delay="300">
+                  <h3 class="discount-title">🎁 خصومات حصرية للمؤسسات الخيرية والدعوية</h3>
+                  <p class="discount-description">
+                    ندرك أهمية نشر الخير والدعوة في هذا العصر، لذا نمنح خصمًا خاصًا على برمجة التطبيقات لكل مؤسسة خيرية أو دعوية تهدف لخدمة المجتمع.
+                  </p>
+                  <p class="discount-highlight">
+                    بادر اليوم، وسنكون شركاءكم في تقديم رسالة راقية عبر تطبيق سهل الاستخدام.
+                  </p>
+                  <div class="discount-features">
+                    <div class="discount-feature" data-aos="fade-up" data-aos-delay="400">
+                      <i class="fas fa-check-circle"></i>
+                      <span>تصميم عصري وجذاب</span>
+                    </div>
+                    <div class="discount-feature" data-aos="fade-up" data-aos-delay="500">
+                      <i class="fas fa-check-circle"></i>
+                      <span>دعم فني مستمر</span>
+                    </div>
+                    <div class="discount-feature" data-aos="fade-up" data-aos-delay="600">
+                      <i class="fas fa-check-circle"></i>
+                      <span>تطوير مستمر للتطبيق</span>
+                    </div>
+                  </div>
+                  <div class="discount-cta" data-aos="fade-up" data-aos-delay="700">
+                    <a href="https://wa.me/201555855857" class="btn-custom animated-btn">احصل على الخصم الآن</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* تنسيقات قسم الخصومات الحصرية */
+  .discount-section {
+    position: relative;
+    padding: 100px 0;
+    overflow: hidden;
+    background: url('https://dwam-tech.com/wp-content/uploads/2025/06/charity-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 1;
+  }
+  
+  /* طبقة التعتيم المتحركة */
+  .discount-bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 140, 0, 0.1) 100%);
+    z-index: 1;
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+  }
+  
+  /* جزيئات متحركة في الخلفية */
+  .discount-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23ff8c00" opacity="0.3"/></svg>');
+    background-size: 100px 100px;
+    z-index: 1;
+    opacity: 0.5;
+  }
+  
+  /* زخارف الزوايا */
+  .corner-decoration-discount-1 {
+    top: 0;
+    right: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,0 L150,0 L150,150 Z" fill="%23ff8c00"/></svg>');
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 1;
+    opacity: 0.2;
+  }
+  
+  .corner-decoration-discount-2 {
+    bottom: 0;
+    left: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 150 150"><path d="M0,150 L0,0 L150,150 Z" fill="%23cb3d27"/></svg>');
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    z-index: 1;
+    opacity: 0.2;
+  }
+  
+  /* صندوق الخصومات */
+  .charity-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 50px 30px;
+    border-top: 5px solid #ff8c00;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    transition: all 0.5s ease;
+  }
+  
+  .charity-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 140, 0, 0.05) 0%, rgba(255, 255, 255, 0) 50%, rgba(203, 61, 39, 0.05) 100%);
+    z-index: -1;
+  }
+  
+  .charity-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+  }
+  
+  /* أيقونة الخصم */
+  .charity-icon {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .discount-image {
+    max-width: 200px;
+    height: 350px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: all 0.5s ease;
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .charity-icon:hover .discount-image {
+    transform: scale(1.05);
+  }
+  
+  /* شارة الخصم */
+  .discount-badge {
+    position: absolute;
+    top: -15px;
+    right: 50%;
+    transform: translateX(50%) rotate(-15deg);
+    background: linear-gradient(135deg, #ff8c00 0%, #cb3d27 100%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(203, 61, 39, 0.3);
+    z-index: 3;
+    animation: pulse-badge 2s infinite;
+  }
+  
+  @keyframes pulse-badge {
+    0% {
+      transform: translateX(50%) rotate(-15deg) scale(1);
+    }
+    50% {
+      transform: translateX(50%) rotate(-15deg) scale(1.1);
+    }
+    100% {
+      transform: translateX(50%) rotate(-15deg) scale(1);
+    }
+  }
+  
+  .discount-percent {
+    font-size: 24px;
+    line-height: 1;
+  }
+  
+  .discount-text {
+    font-size: 16px;
+  }
+  
+  /* محتوى الخصم */
+  .charity-content {
+    direction: rtl;
+    text-align: right;
+  }
+  
+  .discount-title {
+    color: #ff8c00;
+    margin-bottom: 20px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    font-size: 24px;
+  }
+  
+  .discount-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #cb3d27, #ff8c00);
+    animation: widthAnimation 3s ease-in-out infinite;
+  }
+  
+  @keyframes widthAnimation {
+    0% {
+      width: 40px;
+    }
+    50% {
+      width: 120px;
+    }
+    100% {
+      width: 40px;
+    }
+  }
+  
+  .discount-description {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: #555;
+  }
+  
+  .discount-highlight {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #cb3d27;
+    border-right: 3px solid #ff8c00;
+    padding-right: 15px;
+    background-color: rgba(255, 140, 0, 0.05);
+    padding: 15px;
+    border-radius: 0 10px 10px 0;
+  }
+  
+  /* ميزات الخصم */
+  .discount-features {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+  
+  .discount-feature {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    margin-bottom: 15px;
+  }
+  
+  .discount-feature i {
+    color: #ff8c00;
+    font-size: 20px;
+    margin-left: 10px;
+  }
+  
+  .discount-feature span {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  /* زر الدعوة للعمل */
+  .discount-cta {
+    margin-top: 30px;
+  }
+  
+  .discount-cta .btn-custom {
+    background: linear-gradient(135deg, #ff8c00 0%, #cb3d27 100%);
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(255, 140, 0, 0.3);
+  }
+  
+  .discount-cta .btn-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(203, 61, 39, 0.3);
+  }
+  
+  .discount-cta .btn-custom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.5s ease;
+  }
+  
+  .discount-cta .btn-custom:hover::before {
+    left: 100%;
+  }
+  
+  /* تحسينات للأجهزة المحمولة */
+  @media (max-width: 991px) {
+    .discount-section {
+      padding: 60px 0;
+    }
+    
+    .charity-box {
+      padding: 30px 20px;
+    }
+    
+    .discount-title {
+      font-size: 22px;
+      text-align: center;
+    }
+    
+    .discount-title::after {
+      right: 50%;
+      transform: translateX(50%);
+    }
+    
+    .charity-content {
+      text-align: center;
+      margin-top: 30px;
+    }
+    
+    .discount-features {
+      justify-content: center;
+    }
+    
+    .discount-feature {
+      margin: 0 15px 15px;
+    }
+    
+    .discount-cta {
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .discount-title {
+      font-size: 20px;
+    }
+    
+    .discount-description,
+    .discount-highlight {
+      font-size: 16px;
+    }
+    
+    .discount-badge {
+      width: 70px;
+      height: 70px;
+    }
+    
+    .discount-percent {
+      font-size: 20px;
+    }
+    
+    .discount-text {
+      font-size: 14px;
+    }
+  }
+</style>
+ 
+<!-- =========================================== 
+ 	 	 End "خصومات حصرية" section 
+ ============================================ -->
+ <!--===== CLIENTS SLIDER SECTION STARTS =======-->
+<!--===== قسم عملاؤنا =======-->
+<div class="clients-section" style="padding: 80px 0; background-color: #fff; position: relative; overflow: hidden;" id="clients">
+  <!-- عناصر زخرفية -->
+  <div class="decoration-element" style="position: absolute; top: -30px; right: -30px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(255, 132, 0, 0.1) 0%, rgba(255, 132, 0, 0) 70%); border-radius: 50%;"></div>
+  <div class="decoration-element" style="position: absolute; bottom: -40px; left: -40px; width: 200px; height: 200px; border: 3px solid rgba(255, 132, 0, 0.05); border-radius: 50%;"></div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="section-title" data-aos="fade-up" data-aos-duration="1000">
+          <h2 style="font-size: 42px; font-weight: 700; margin-bottom: 15px; color: #333; position: relative; display: inline-block;">
+            عملاؤنا
+            <span style="position: absolute; bottom: -10px; right: 0; width: 100%; height: 4px; background: linear-gradient(90deg, rgba(255, 132, 0, 0), rgba(255, 132, 0, 1), rgba(255, 132, 0, 0)); border-radius: 2px;"></span>
+          </h2>
+          <p style="font-size: 18px; color: #666; margin-bottom: 40px;" data-aos="fade-up" data-aos-duration="1200">
+            نفخر بثقة عملائنا ونسعى دائماً لتقديم أفضل الخدمات
+          </p>
+        </div>
+      </div>
+    </div>
+    <img data-aos="fade-right" data-aos-duration="1400" src="https://dwam-tech.com/wp-content/uploads/2025/06/logos.jpeg" alt="Background Image" style="width:100%; margin-top: 20px;">
+
+  </div>
+</div>
+
+
+
+<!--===== SOCIAL MEDIA SECTION STARTS =======-->
+<section class="social-media-section" style="padding: 80px 0; position: relative; direction: rtl; overflow: hidden;">
+  <!-- خلفية القسم -->
+  <div class="social-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://dwam-tech.com/wp-content/uploads/2025/06/business-still-life-concept-2024-09-13-11-25-50-utc-scaled.jpg') no-repeat center center; background-size: cover; z-index: 1;"></div>
+  
+  <!-- طبقة التعتيم -->
+  <div class="social-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(134, 134, 134, 0.7) 100%); z-index: 2;"></div>
+  
+  <div class="container" style="position: relative; z-index: 3;">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <div class="section-title" data-aos="fade-up" data-aos-duration="1000">
+          <h2 style="font-size: 36px; font-weight: 700; color: #ffffff; margin-bottom: 20px;">تواصل معنا</h2>
+          <div class="title-line" style="width: 80px; height: 4px; background: #ffffff; margin: 0 auto 40px;"></div>
+        </div>
+      </div>
+    </div>
+    
+        
+        <!-- معلومات الاتصال المختصرة -->
+                <!-- معلومات الاتصال المختصرة -->
+                <div class="contact-info-brief" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" style="margin-top: 50px; text-align: center;">
+                  <div class="phone-number-container" style="margin-bottom: 30px;">
+                    <!-- رقم الهاتف بتصميم مميز -->
+                    <div class="fancy-phone-number" style="font-family: 'Cairo', sans-serif; margin-bottom: 15px; direction: ltr;"> 
+                      <span style="font-size: 50px; color: #ffffff; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">0</span> 
+                      <span style="font-size: 50px; color: #ffffff; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">1</span> 
+                      <span style="font-size: 50px; color: #ffffff; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">5</span>
+                      <span style="font-size: 70px; color: #ff8400; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">5</span> 
+                      <span style="font-size: 70px; color: #ff8400; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">5</span> 
+                      <span style="font-size: 50px; color: #ffffff; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">8</span> 
+                      <span style="font-size: 70px; color: #ff8400; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">5</span> 
+                      <span style="font-size: 70px; color: #ff8400; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">5</span> 
+                      <span style="font-size: 50px; color: #ffffff; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">8</span> 
+                      <span style="font-size: 50px; color: #ffffff; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">5</span> 
+                      <span style="font-size: 50px; color: #ffffff; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.9);">7</span> 
+                    </div>
+                    
+                    <!-- الجملة تحت الرقم -->
+                    <p style="color: #ffffff; font-size: 18px; margin-bottom: 25px;">
+                      (للاتصال من خارج مصر أضف 2+ )
+                    </p>
+                    
+                    <!-- الأزرار -->
+                    <div class="contact-buttons" style="display: flex; justify-content: center; gap: 20px;">
+                      <!-- زر الواتساب -->
+                      <a href="https://wa.me/201555855857" target="_blank" style="display: inline-flex; align-items: center; background: #25D366; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-size: 18px; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                        <i class="fab fa-whatsapp" style="margin-left: 10px; font-size: 22px;"></i>
+                        واتساب
+                      </a>
+                      
+                      <!-- زر الاتصال -->
+                      <a href="tel:+201555855857" style="display: inline-flex; align-items: center; background: #ff8400; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-size: 18px; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                        <i class="fas fa-phone-alt" style="margin-left: 10px; font-size: 20px;"></i>
+                        للاتصال
+                      </a>
+                    </div>
+                  </div>
+                </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- CSS للتأثيرات -->
+  <style>
+    .social-icon:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .contact-info-brief a:hover {
+      color: #7e7e7e !important;
+    }
+    
+    @media (max-width: 768px) {
+      .social-icons-container {
+        gap: 15px;
+      }
+      
+      .social-icon {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .social-icon i {
+        font-size: 28px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .social-icons-container {
+        gap: 10px;
+      }
+      
+      .social-icon {
+        width: 50px;
+        height: 50px;
+      }
+      
+      .social-icon i {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .social-icons-container {
+        gap: 5px;
+      }
+      
+      .social-icon {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .social-icon i {
+        font-size: 20px;
+      }
+      .fancy-phone-number{
+      width: 100%;
+      text-align: center;
+      font-size: 0;
+      
+      }
+    }
+    @media (max-width: 370px) {
+      .social-icons-container {
+        gap: 5px;
+      }
+      
+      .social-icon {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .social-icon i {
+        font-size: 20px;
+      }
+      .fancy-phone-number{
+        --bs-gutter-x:1.5rem;
+        --bs-gutter-y:0;
+        display: flex;
+      width: 113%;
+      padding-right: calc(var(--bs-gutter-x)*-.5);
+      padding-left: calc(var(--bs-gutter-x)*1.5);
+      }
+    }
+    @media (max-width: 350px) {
+      .social-icons-container {
+        gap: 3px;
+      }
+      
+      .social-icon {
+        width: 30px;
+        height: 30px;
+      }
+      
+      .social-icon i {
+        font-size: 16px;
+      }
+      .fancy-phone-number{
+        --bs-gutter-x:1.5rem;
+        --bs-gutter-y:0;
+        display: flex;
+      width: 116%;
+      padding-right: calc(var(--bs-gutter-x)*-.5);
+      padding-left: calc(var(--bs-gutter-x)*1.5);
+      }
+    }
+  </style>
+</section>
+
+<!--===== SOCIAL MEDIA SECTION ENDS =======-->
+
+  <!--=====JS=======-->
+  <script src="http://dwam-tech.com/assets/js/plugins/bootstrap.min.js"></script>
+  <script src="http://dwam-tech.com/assets/js/plugins/swiper.bundle.js"></script>
+  <script src="http://dwam-tech.com/assets/js/plugins/mobilemenu.js"></script>
+  <script src="http://dwam-tech.com/assets/js/plugins/slick-slider.js"></script>
+  <script src="http://dwam-tech.com/assets/js/plugins/owlcarousel.min.js"></script>
+  <script src="http://dwam-tech.com/assets/js/plugins/counter.js"></script>
+  <script src="http://dwam-tech.com/assets/js/plugins/waypoints.js"></script>
+  <script src="http://dwam-tech.com/assets/js/plugins/aos.js"></script>
+  <script src="http://dwam-tech.com/assets/js/plugins/gsap.min.js"></script>
+  <script src="http://dwam-tech.com/assets/js/plugins/magnific-popup.js"></script>
+  <script src="http://dwam-tech.com/assets/js/plugins/ScrollTrigger.min.js"></script>
+  <script src="http://dwam-tech.com/assets/js/main.js"></script>
+  <!-- AOS JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: false,
+            mirror: false,
+            offset: 100
+        });
+    });
+      // أضف هذا الكود في نهاية ملف index.html أو في ملف JavaScript منفصل
+document.addEventListener('DOMContentLoaded', function() {
+  // الحصول على جميع روابط <a> في الصفحة
+  const allLinks = document.querySelectorAll('a');
+  
+  // إضافة خاصية target="_blank" لكل رابط
+  allLinks.forEach(link => {
+    // تجنب تعديل الروابط التي تبدأ بـ # (روابط داخلية)
+    if (!link.getAttribute('href').startsWith('#')) {
+      link.setAttribute('target', '_blank');
+      
+      // إضافة خاصية rel="noopener noreferrer" للأمان
+      // تمنع هذه الخاصية الصفحة المفتوحة من الوصول إلى window.opener
+      link.setAttribute('rel', 'noopener noreferrer');
+    }
+  });
+});
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
+</body>
+</html>
